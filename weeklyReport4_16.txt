@@ -1,0 +1,40 @@
+
+<< 2nd Team Weekly Report >>
+
+4/9 - 4/16
+
+   Team Name: The Pandas
+   Team leader: Samuel Boulanger
+   Team members: Samuel Boulanger, Cindy Ho, Aldo Barrientos
+   
+   Summary
+      This week we meet up at the MLK Library to discuss how we will split up the tasks of the project. We started creating a simple list of use cases, and a list of classes that we may need in the program design. We set up a Github repository so we could all easily contribute to the program and stay up to date. Because we had technical difficulties and other prior scheduling responsibilities, we ended the meeting after 2 hours and decided to all connect to the repository this weekend and then meet up the following Tuesday.
+
+Samuel Boulanger
+U: 4/09 [0] - No work
+M: 4/10 [0] - No work
+T: 4/11 [0] - No work
+W: 4/12 [0] - No work
+R: 4/13 [3] - I met up with the team to discuss the responsibilities. I created a repository on Github and after the team split up I stayed at the Library to read up on MVC and how to design the program.
+F: 4/14 [0] - No work
+A: 4/15 [0] - No work
+
+Cindy Ho
+Su 4/09
+M  4/10
+T  4/11
+W  4/12
+Th 4/13 Met up with team in the library, set up github and worked on uml  
+F  4/14 Researched about MVC (+1)
+S  4/15
+
+Aldo Barrientos
+
+4/09:
+4/10:
+4/11:
+4/12:
+4/13: creating the initial UML and overall design of project
+4/14:
+4/15: review MVC and incorporate into design (1 hr)
+
