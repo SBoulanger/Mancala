@@ -1,0 +1,4 @@
+ 
+ class Mancala extends Hole {
+ 	
+ }
