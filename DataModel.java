@@ -1,13 +1,13 @@
-package mancala;
 
 public class DataModel 
 {
+	//
 	int holes[] = new int[14];
-	int startPebbles;
+	int nStones;
 	
-	public DataModel(int startPebbles)
+	public DataModel(int nStones)
 	{
-		this.startPebbles = startPebbles;
+		this.nStones = nStones;
 		fill();
 	}
 	
@@ -16,12 +16,13 @@ public class DataModel
 		for(int i = 2; i < holes.length; i++)
 		{
 			holes[i] = startPebbles;
-		}
-		
+		}		
 	}
 	
 	public int[] getData()
 	{
 		return holes;
 	}
+
+	public void move()
 }
