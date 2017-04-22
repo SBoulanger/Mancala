@@ -1,3 +1,5 @@
+package mancala;
+
 
 class Stone {
 

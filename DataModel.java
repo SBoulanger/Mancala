@@ -1,8 +1,7 @@
 
 public class DataModel 
 {
-	//
-	int holes[] = new int[14];
+	Hole holes[] = new Hole[14];
 	int nStones;
 	
 	public DataModel(int nStones)
@@ -15,11 +14,11 @@ public class DataModel
 	{
 		for(int i = 2; i < holes.length; i++)
 		{
-			holes[i] = startPebbles;
+			holes[i] = Pit(nStones);
 		}		
 	}
 	
-	public int[] getData()
+	public Hole[] getData()
 	{
 		return holes;
 	}
