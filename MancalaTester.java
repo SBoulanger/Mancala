@@ -1,3 +1,5 @@
+package mancala;
+
 import java.util.Scanner;
 
 public class MancalaTester {
@@ -11,9 +13,9 @@ public class MancalaTester {
 		System.out.println("How many stones would you like to start with? 3 or 4?");
 		int amtStart = scanner.nextInt();
 		
-		if(amtStart == 3)
-			Board board = new Board(3);
-		if(amtStart == 4)
-			Board board = new Board(4);
+		//if(amtStart == 3)
+			//Board board = new Board(3);
+		//if(amtStart == 4)
+			//Board board = new Board(4);
 	}
 }
