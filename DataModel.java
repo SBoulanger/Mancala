@@ -2,7 +2,7 @@ package mancala;
 
 public class DataModel 
 {
-	int holes[] = new int[14];
+	Hole holes[] = new Hole[14];
 	int startPebbles;
 	
 	public DataModel(int startPebbles)
@@ -15,12 +15,11 @@ public class DataModel
 	{
 		for(int i = 2; i < holes.length; i++)
 		{
-			holes[i] = startPebbles;
+			holes[i] = new Pit(startPebbles);
 		}
-		
 	}
 	
-	public int[] getData()
+	public Hole[] getData()
 	{
 		return holes;
 	}
