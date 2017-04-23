@@ -12,9 +12,7 @@ public class Board implements Icon implements ChangeListener extends JFrame
 	DataModel model;
 	private Hole[] holes;
 	private boolean isPlayerA; //true = A, false = B
-	
-	public Board(DataModel model)
-	{
+	private RectangleBoard rectBoard;	
 		int n = model.getAmtStart;
 		this.model = model;
 		
@@ -89,10 +87,12 @@ public class Board implements Icon implements ChangeListener extends JFrame
 	{
 		return 0;
 	}
-
-	public int getIconHeight() 
+	
+	public Board(DataModel model, BoardType board)
 	{
-		return 0;
+		this.model = model;
+		
+		rectBoard = new RectangleBoard(model);	
 	}
 	 
 	
