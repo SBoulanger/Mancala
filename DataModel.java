@@ -1,4 +1,3 @@
-
 public class DataModel 
 {
 	Hole holes[] = new Hole[14];
