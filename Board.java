@@ -1,23 +1,32 @@
-package mancala;
 
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+import java.awt.event.*;
+import java.util.ArrayList;
+
 import javax.swing.Icon;
 import javax.swing.JPanel;
+import javax.swing.JFrame;
 
-public class Board implements Icon implements ChangeListener extends JFrame 
+public class Board extends JFrame implements ChangeListener 
 {
 	DataModel model;
-	private Hole[] holes;
+	public ArrayList<Hole> holes;
 	private boolean isPlayerA; //true = A, false = B
 	private RectangleBoard rectBoard;	
 
+
 	public Board(DataModel dm){
 		this.model = dm;
-		int n = model.getAmtStart;
-		
+		int n = model.getAmtStart();
+		this.holes = model.getData();
+
+
 		MouseListener ml = new MouseListener(){
 			public void mouseClicked(MouseEvent e) 
 			{
@@ -25,41 +34,11 @@ public class Board implements Icon implements ChangeListener extends JFrame
 				int y;
 				x = e.getX();
 				y = e.getY();
-				if(A1.contains(x,y)){
-					model.move(A1.getArrPos());
-				}
-				else if(A2.contains(x,y)){
-					model.move(A2.getArrPos());
-				}
-				else if(A3.contains(x,y)){
-					model.move(A3.getArrPos());
-				}
-				else if(A4.contains(x,y)){
-					model.move(A4.getArrPos());
-				}
-				else if(A5.contains(x,y)){
-					model.move(A5.getArrPos());
-				}
-				else if(A6.contains(x,y)){
-					model.move(A6.getArrPos());
-				}
-				else if(B1.contains(x,y)){
-					model.move(B1.getArrPos());
-				}
-				else if(B2.contains(x,y)){
-					model.move(B2.getArrPos());
-				}
-				else if(B3.contains(x,y)){
-					model.move(B3.getArrPos());
-				}
-				else if(B4.contains(x,y)){
-					model.move(B4.getArrPos());
-				}
-				else if(B5.contains(x,y)){
-					model.move(B5.getArrPos());
-				}
-				else if(B6.contains(x,y)){
-					model.move(B5.getArrPos());
+				
+				for (Hole h : holes){
+					if (!(h instanceof Mancala) && h.contains(x, y)){
+						model.move(h.getArrPos());
+					}
 				}
 			}
 
@@ -80,7 +59,7 @@ public class Board implements Icon implements ChangeListener extends JFrame
 
         for(int i = 0; i < 14; i++)
         {
-        	holes[i].drawStones(g2);
+        	holes.get(i).drawStones(g2);
         }
         
 	}
@@ -92,7 +71,6 @@ public class Board implements Icon implements ChangeListener extends JFrame
 	
 	public void addChangeListener(ChangeListener listener){
 		model.attachListener(listener);
-		stateChanged();
 	}
 	
 	public void stateChanged(ChangeEvent e){

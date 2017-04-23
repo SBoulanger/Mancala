@@ -1,17 +1,17 @@
-package mancala;
 
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
+import java.util.ArrayList;
 
 import javax.swing.Icon;
 
 public class RectangleBoard implements Icon
 {
 	private DataModel model;
-	private Hole[] holes;
+	private ArrayList<Hole> holes;
 	private int pebbles;
 	private int holeX = 150;
 	private int holeY = 50;
@@ -31,8 +31,8 @@ public class RectangleBoard implements Icon
 
         for(int i = 0; i < 14; i++)
         {
-        	holes[i].drawStones(g2);
-            Hole hole = new Hole(model.startPebbles, i);
+        	holes.get(i).drawStones(g2);
+            Hole hole = new Hole(model.getHoleAmount(i), i);
             hole.draw(holeX, holeY, g2);
             translateHoles(i);
         }

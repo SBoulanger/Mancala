@@ -1,4 +1,3 @@
-package mancala;
 
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
@@ -69,6 +68,9 @@ class Hole
 	public int getStones()
 	{
 		return pebbles;
+	}
+	public boolean contains(int x, int y){
+		return true;
 	}
 
 }

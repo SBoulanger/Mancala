@@ -1,4 +1,3 @@
-package mancala;
 
  
  class Mancala extends Hole 
