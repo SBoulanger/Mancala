@@ -7,35 +7,23 @@ import java.awt.Graphics2D;
 import javax.swing.Icon;
 
 
-public class Board implements Icon
+public class Board 
 {
-	DataModel model;
+	private DataModel model;
+	private RectangleBoard rectBoard;
 	
-	public Board(DataModel model)
+	enum BoardType
+	{
+		circular, rectangular;
+	}
+	
+	public Board(DataModel model, BoardType board)
 	{
 		this.model = model;
-	}
-
-	public void paintIcon(Component c, Graphics g, int x, int y) 
-	{
-        Graphics2D g2 = (Graphics2D) g;
-
-        for(int i = 0; i < 14; i++)
-        {
-        	
-        }
-        
-	}
-
-	public int getIconWidth() 
-	{
-		return 0;
-	}
-
-	public int getIconHeight() 
-	{
-		return 0;
+		
+		rectBoard = new RectangleBoard(model);	
 	}
 	
 	
+
 }
