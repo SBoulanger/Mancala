@@ -67,7 +67,7 @@ public class Board implements Icon implements ChangeListener extends JFrame
 			public void mouseExited(MouseEvent e) {}
 			public void mousePressed(MouseEvent e) {}
 			public void mouseReleased(MouseEvent e) {}
-		}
+		};
 		
 		JPanel jp = new JPanel();
 		jp.addMouseListener(ml);

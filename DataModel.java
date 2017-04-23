@@ -63,7 +63,7 @@ public class DataModel
 		}
 	}
 
-	public getHoleAmount(int position){
+	public int getHoleAmount(int position){
 		return holes[position].getStones();
 	}
 	public int getAmtStart(){
