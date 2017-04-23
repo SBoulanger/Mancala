@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 package mancala;
 
+=======
+>>>>>>> master
 public class DataModel 
 {
 	Hole holes[] = new Hole[14];
