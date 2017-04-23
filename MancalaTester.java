@@ -12,10 +12,8 @@ public class MancalaTester {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("How many stones would you like to start with? 3 or 4?");
 		int amtStart = scanner.nextInt();
+		DataModel dm = new DataModel(amtStart);
+		Board b = new Board(dm);
 		
-		//if(amtStart == 3)
-			//Board board = new Board(3);
-		//if(amtStart == 4)
-			//Board board = new Board(4);
 	}
 }

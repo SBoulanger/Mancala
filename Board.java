@@ -13,8 +13,10 @@ public class Board implements Icon implements ChangeListener extends JFrame
 	private Hole[] holes;
 	private boolean isPlayerA; //true = A, false = B
 	private RectangleBoard rectBoard;	
+
+	public Board(DataModel dm){
+		this.model = dm;
 		int n = model.getAmtStart;
-		this.model = model;
 		
 		MouseListener ml = new MouseListener(){
 			public void mouseClicked(MouseEvent e) 
@@ -87,14 +89,6 @@ public class Board implements Icon implements ChangeListener extends JFrame
 	{
 		return 0;
 	}
-	
-	public Board(DataModel model, BoardType board)
-	{
-		this.model = model;
-		
-		rectBoard = new RectangleBoard(model);	
-	}
-	 
 	
 	public void addChangeListener(ChangeListener listener){
 		model.attachListener(listener);
