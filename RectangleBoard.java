@@ -12,10 +12,7 @@ public class RectangleBoard implements Icon
 {
 	private DataModel model;
 	private Hole[] holes;
-<<<<<<< HEAD
-=======
 	private int pebbles;
->>>>>>> master
 	private int holeX = 150;
 	private int holeY = 50;
 	
@@ -23,11 +20,8 @@ public class RectangleBoard implements Icon
 	{
 		this.model = model;
 		holes = model.getData();
-<<<<<<< HEAD
-=======
 		this.pebbles = pebbles;
 
->>>>>>> master
 	}
 	
 	
@@ -37,17 +31,9 @@ public class RectangleBoard implements Icon
 
         for(int i = 0; i < 14; i++)
         {
-<<<<<<< HEAD
-        	if(i == 7 || i == 0)
-    			continue;
-            Hole hole = new Hole(model.startPebbles, i);
-            hole.draw(holeX, holeY, g2);
-        	holes[i].drawStones(g2, holeX, holeY);
-=======
         	holes[i].drawStones(g2);
             Hole hole = new Hole(model.startPebbles, i);
             hole.draw(holeX, holeY, g2);
->>>>>>> master
             translateHoles(i);
         }
         
@@ -63,11 +49,8 @@ public class RectangleBoard implements Icon
 	
 	public void translateHoles(int pos)
 	{
-<<<<<<< HEAD
-=======
 		if(pos == 7 || pos == 0)
 			return;
->>>>>>> master
 		
 		if(pos == 6)
 		{

@@ -7,11 +7,8 @@ class Hole
 {
 
 	private int pebbles;
-<<<<<<< HEAD
-=======
 	private int pebbleX;
 	private int pebbleY;
->>>>>>> master
 	private int arrPos;
 	
 	int[][] holePos = new int[14][2]; //initialize to actual drawn positions
@@ -24,21 +21,13 @@ class Hole
 		setCords();
 	}
 	
-<<<<<<< HEAD
-	public void drawStones(Graphics2D g2, int x, int y)
-=======
 	public void drawStones(Graphics2D g2)
->>>>>>> master
 	{
 		for(int i = 0; i < pebbles; i++)
 		{
 			translatePebble();
 			Stone pebble = new Stone();
-<<<<<<< HEAD
-			pebble.draw(g2, x, y);
-=======
 			pebble.draw(g2, pebbleX, pebbleY);
->>>>>>> master
 		}
 
 	}
