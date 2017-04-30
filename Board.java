@@ -50,28 +50,13 @@ public class Board extends JFrame implements ChangeListener
 		
 		JPanel jp = new JPanel();
 		jp.addMouseListener(ml);
+		add(jp);
 		
 	}
 	
-	public void paintIcon(Component c, Graphics g, int x, int y) 
-	{
-        Graphics2D g2 = (Graphics2D) g;
-
-        for(int i = 0; i < 14; i++)
-        {
-        	holes.get(i).drawStones(g2);
-        }
-        
-	}
-
-	public int getIconWidth() 
-	{
-		return 0;
-	}
-	
-	public void addChangeListener(ChangeListener listener){
+	/*public void addChangeListener(ChangeListener listener){
 		model.attachListener(listener);
-	}
+	}*/
 	
 	public void stateChanged(ChangeEvent e){
 		repaint();
