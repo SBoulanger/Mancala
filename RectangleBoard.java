@@ -50,9 +50,9 @@ public class RectangleBoard extends BoardLayout
 		Rectangle2D board = new Rectangle2D.Double(10.0,10.0,800.0,300.0);
 		g2.draw(board);
 
-		//for (int i = 0; i < this.holes.size();i++){
-		//	this.holes.get(i).draw(g2,10,10);
-		//}
+		for (int i = 0; i < this.holes.size();i++){
+			this.holes.get(i).draw(g2,10,10);
+		}
 	}
 
 	public 	int getIconWidth() 
