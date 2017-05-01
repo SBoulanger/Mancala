@@ -6,24 +6,18 @@ import java.awt.geom.GeneralPath;
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.JPanel;
+import java.util.ArrayList;
 
-public abstract class BoardLayout extends JPanel {
+public abstract class BoardLayout implements Icon {
 
-
-	public ArrayList<Holes> holes;
-	//public GeneralPath pathA;
-	//public GeneralPath pathB;
+	public ArrayList<Hole> holes;
 
 	public BoardLayout(){
-		this.setPreferredSize(new Dimension(getWidth(), getHeight()));
+		
 	}
 
-	public void paintComponent(Graphics g){
-		draw(g);
-	}
-
-	abstract public void draw(Graphics g);
-	abstract public int getHeight();
-	abstract public int getWidth();
+	abstract public void paintIcon(Component c,Graphics g, int x, int y);
+	abstract public int getIconHeight();
+	abstract public int getIconWidth();
 
 }

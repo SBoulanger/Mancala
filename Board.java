@@ -13,6 +13,10 @@ import javax.swing.Icon;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class Board extends JFrame implements ChangeListener 
 {
@@ -57,7 +61,9 @@ public class Board extends JFrame implements ChangeListener
 	}
 	public void attachBoardLayout(BoardLayout bl){
 		this.layout = bl;
-		add(bl);
+		JLabel jl = new JLabel(bl);
+		jl.setPreferredSize(new Dimension(bl.getIconWidth(), bl.getIconHeight()));
+		add(jl);
 	}
 	//public void paintComponent(Graphics g){
 	//	layout.draw(g);

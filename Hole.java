@@ -83,9 +83,6 @@ abstract class Hole
 	public int getY(){
 		return this.y;
 	}
-	abstract public void paintIcon(Component c, Graphics g, int x, int y);
-	abstract public int getIconHeight();
-	abstract public int getIconWidth();
-	abstract public void draw(Graphics g, int x, int y);
+	abstract public void draw(Graphics2D g2, int x, int y);
 
 }
