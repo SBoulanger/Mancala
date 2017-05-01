@@ -69,7 +69,7 @@ public class DataModel
 			if (addPosition >= 14){
 				addPosition = 0 + addPosition % 14;
 			}
-			this.holes.get(i).setStones(this.holes.get(addPosition).getStones()+1);
+			this.holes.get(addPosition).setStones(this.holes.get(addPosition).getStones()+1);
 		}
 		if (isMancala(addPosition)){
 			move(addPosition);

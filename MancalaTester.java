@@ -15,11 +15,11 @@ public class MancalaTester {
                 int amtStart = scanner.nextInt();
                 DataModel dm = new DataModel(amtStart);
                 Board b = new Board(dm);
-                RectangleBoard rectBoard = new RectangleBoard(dm);
+                b.attachBoardLayout(new RectangleBoard(dm.getData()));
                 
-                JLabel myLabel = new JLabel(rectBoard);
-                b.add(myLabel);
-                b.setLayout(new FlowLayout());
+                //JLabel myLabel = new JLabel();
+                //b.add(myLabel);
+                //b.setLayout(new FlowLayout());
                 b.pack();
                 b.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 b.setVisible(true);

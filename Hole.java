@@ -1,10 +1,15 @@
 
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
+import javax.swing.Icon;
+import java.awt.Component;
+import java.awt.Graphics;
 
-class Hole 
+abstract class Hole implements Icon
 {
 
+	private int x;
+	private int y;
 	private int pebbles;
 	private int pebbleX;
 	private int pebbleY;
@@ -53,12 +58,6 @@ class Hole
 
 	}
 	
-	public void draw(int x, int y, Graphics2D g2)
-	{
-		Ellipse2D hole = new Ellipse2D.Double(x, y, 50, 50);
-        g2.draw(hole);
-	}
-	
 	
 	public void setStones(int pebbles)
 	{
@@ -72,5 +71,20 @@ class Hole
 	public boolean contains(int x, int y){
 		return true;
 	}
+	public void setX(int x){
+		this.x = x;
+	}
+	public void setY(int y){
+		this.y = y;
+	}
+	public int getX(){
+		return this.x;
+	}
+	public int getY(){
+		return this.y;
+	}
+	abstract public void paintIcon(Component c, Graphics g, int x, int y);
+	abstract public int getIconHeight();
+	abstract public int getIconWidth();
 
 }

@@ -12,13 +12,15 @@ import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
+import javax.swing.JComponent;
 
 public class Board extends JFrame implements ChangeListener 
 {
 	DataModel model;
+	public BoardLayout layout;
 	public ArrayList<Hole> holes;
 	private boolean isPlayerA; //true = A, false = B
-	private RectangleBoard rectBoard;	
+	private RectangleBoard rectBoard;
 
 
 	public Board(DataModel dm){
@@ -53,6 +55,13 @@ public class Board extends JFrame implements ChangeListener
 		add(jp);
 		
 	}
+	public void attachBoardLayout(BoardLayout bl){
+		this.layout = bl;
+		add(bl);
+	}
+	//public void paintComponent(Graphics g){
+	//	layout.draw(g);
+	//}
 	
 	/*public void addChangeListener(ChangeListener listener){
 		model.attachListener(listener);
