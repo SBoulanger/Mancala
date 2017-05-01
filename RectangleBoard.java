@@ -23,10 +23,11 @@ public class RectangleBoard extends BoardLayout
 	{
 		super();
 
+		this.holes = holes;
+
 		for (int i = 0; i < holes.size()/2; i++){
 			holes.get(i).setX(10+i);
 			holes.get(i).setY(10+i);
-			//add(holes.get(i));
 		}
 	}
 	
@@ -49,6 +50,10 @@ public class RectangleBoard extends BoardLayout
 		Graphics2D g2 = (Graphics2D) g;
 		Rectangle2D board = new Rectangle2D.Double(10.0,10.0,800.0,300.0);
 		g2.draw(board);
+
+		for (int i = 0; i < this.holes.size();i++){
+			
+		}
 
 		//pathA.draw(g2);
 	}

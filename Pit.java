@@ -13,13 +13,13 @@ class Pit extends Hole
 	{
 		super(pebbles, id);
 	}
-	
+	/*
 	public void draw(int x, int y, Graphics2D g2)
 	{
 		Ellipse2D hole = new Ellipse2D.Double(x, y, 50, 50);
         g2.draw(hole);
 	}
-	
+	*/
 	public void paintIcon(Component c, Graphics g, int x, int y){
 		Graphics2D g2 = (Graphics2D) g;
 		Ellipse2D hole = new Ellipse2D.Double(getX(), getY(), 50, 50);
@@ -30,6 +30,11 @@ class Pit extends Hole
 	}
 	public int getIconHeight(){
 		return 10;
+	}
+	public void draw(Graphics g, int x, int y){
+		Graphics2D g2 = (Graphics2D) g;
+		Ellipse2D hole = new Ellipse2D.Double(x, y, 50, 50);
+        g2.draw(hole);
 	}
 
 

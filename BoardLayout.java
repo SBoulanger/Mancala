@@ -7,8 +7,10 @@ import javax.swing.*;
 import java.awt.*;
 import javax.swing.JPanel;
 
-public abstract class BoardLayout extends JLabel {
+public abstract class BoardLayout extends JPanel {
 
+
+	public ArrayList<Holes> holes;
 	//public GeneralPath pathA;
 	//public GeneralPath pathB;
 

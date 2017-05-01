@@ -5,7 +5,7 @@ import javax.swing.Icon;
 import java.awt.Component;
 import java.awt.Graphics;
 
-abstract class Hole implements Icon
+abstract class Hole
 {
 
 	private int x;
@@ -86,5 +86,6 @@ abstract class Hole implements Icon
 	abstract public void paintIcon(Component c, Graphics g, int x, int y);
 	abstract public int getIconHeight();
 	abstract public int getIconWidth();
+	abstract public void draw(Graphics g, int x, int y);
 
 }
