@@ -7,10 +7,10 @@ import javax.swing.*;
 import java.awt.*;
 import javax.swing.JPanel;
 
-public abstract class BoardLayout extends JPanel {
+public abstract class BoardLayout extends JLabel {
 
-	public GeneralPath pathA;
-	public GeneralPath pathB;
+	//public GeneralPath pathA;
+	//public GeneralPath pathB;
 
 	public BoardLayout(){
 		this.setPreferredSize(new Dimension(getWidth(), getHeight()));
