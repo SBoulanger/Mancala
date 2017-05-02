@@ -16,7 +16,14 @@ public class MancalaTester {
                 int amtStart = scanner.nextInt();
                 DataModel dm = new DataModel(amtStart);
                 Board b = new Board(dm);
-                b.attachBoardLayout(new RectangleBoard(dm.getData()));
+                System.out.println("Which layout would you like? (1) Rectangular (2) Circular");
+                int choice = scanner.nextInt();
+                if(choice == 1){
+                        b.attachBoardLayout(new RectangleBoard(dm.getData()));
+                }
+                if(choice == 2){
+                        b.attachBoardLayout(new CircularBoard(dm.getData()));
+                }
                 
                 //JLabel myLabel = new JLabel();
                 //b.add(myLabel);

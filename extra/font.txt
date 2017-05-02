@@ -1,0 +1,4 @@
+Font Title = new Font("Arial", Font.PLAIN, 50);
+windowTemp.setFont(Title);
+windowTemp.setColor(Color.black);
+windowTemp.drawString("Welcome to Pitch Learner", 70, 80);

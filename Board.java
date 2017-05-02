@@ -27,6 +27,8 @@ public class Board extends JFrame implements ChangeListener
 	private boolean isPlayerA; //true = A, false = B
 	private RectangleBoard rectBoard;
 
+	private int height = 620;
+	private int width = 1220;
 
 	public Board(DataModel dm){
 		this.model = dm;
@@ -63,7 +65,7 @@ public class Board extends JFrame implements ChangeListener
 	public void attachBoardLayout(BoardLayout bl){
 		this.layout = bl;
 		JLabel jl = new JLabel(bl);
-		jl.setPreferredSize(new Dimension(bl.getIconWidth(), bl.getIconHeight()));
+		jl.setPreferredSize(new Dimension(width, height));
 		add(jl);
 	}
 	//public void paintComponent(Graphics g){
