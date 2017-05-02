@@ -1,5 +1,3 @@
-
-
 import javax.swing.JComponent;
 import java.awt.Graphics;
 import javax.swing.JLabel;

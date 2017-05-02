@@ -1,5 +1,3 @@
-
-
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 import javax.swing.Icon;
@@ -48,7 +46,7 @@ abstract class Hole
 	
 	public void addListener()
 	{
-
+		
 	}
 	
 	
