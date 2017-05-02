@@ -1,4 +1,3 @@
-
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
  
@@ -16,7 +15,7 @@ import java.awt.geom.Ellipse2D;
 	}
 	public void draw(Graphics2D g2, int x, int y){
 		Ellipse2D hole = new Ellipse2D.Double(x, y, 120, 360);
-		drawStones(g2, x, y);
+        this.drawStones(g2, x, y);
         g2.draw(hole);
 	}
 	    

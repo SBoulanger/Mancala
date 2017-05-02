@@ -1,5 +1,3 @@
-
-
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -46,6 +44,7 @@ public class RectangleBoard extends BoardLayout
 		this.holes.get(i++).draw(g2,xo,120);
 		xo = 50 + 120 + 10;
 		for (; i < this.holes.size();i++){
+			System.out.println("here");
 			xo = xo + 10;
 			this.holes.get(i).draw(g2,xo,450);
 			xo = xo + 120 + 10;
