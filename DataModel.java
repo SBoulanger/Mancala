@@ -62,24 +62,24 @@ public class DataModel
 	
 
 	public void move(int position){
-		int addPosition = 0;
-		int amount_stones = this.holes.get(position).getStones();
-		this.holes.get(position).setStones(0);
-		for (int i = 0; i < amount_stones;i++){
-			addPosition = position + i;
-			if (addPosition >= 14){
-				addPosition = 0 + addPosition % 14;
-			}
-			this.holes.get(addPosition).setStones(this.holes.get(addPosition).getStones()+1);
-		}
-		if (isMancala(addPosition)){
-			move(addPosition);
-		} else if (isEmpty(addPosition)){
-			int oppStones = this.holes.get(14 - addPosition).getStones();
-			this.holes.get(14 - addPosition).setStones(0);
-			this.holes.get(addPosition).setStones(this.holes.get(addPosition).getStones() + oppStones);
-		}
-		updateBoard();
+		// int addPosition = 0;
+		// int amount_stones = this.holes.get(position).getStones();
+		// this.holes.get(position).setStones(0);
+		// for (int i = 0; i < amount_stones;i++){
+		// 	addPosition = position + i;
+		// 	if (addPosition >= 14){
+		// 		addPosition = 0 + addPosition % 14;
+		// 	}
+		// 	this.holes.get(addPosition).setStones(this.holes.get(addPosition).getStones()+1);
+		// }
+		// if (isMancala(addPosition)){
+		// 	move(addPosition);
+		// } else if (isEmpty(addPosition)){
+		// 	int oppStones = this.holes.get(14 - addPosition).getStones();
+		// 	this.holes.get(14 - addPosition).setStones(0);
+		// 	this.holes.get(addPosition).setStones(this.holes.get(addPosition).getStones() + oppStones);
+		// }
+		// updateBoard();
 
 	}
 	private boolean isMancala(int position){

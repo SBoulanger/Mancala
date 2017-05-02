@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.awt.geom.Rectangle2D;
 import javax.swing.Icon;
 import java.awt.geom.GeneralPath;
+import java.awt.Color;
+import java.awt.Font;
 
 public class CircularBoard extends BoardLayout
 {
@@ -24,28 +26,10 @@ public class CircularBoard extends BoardLayout
 		super();
 
 		this.holes = holes;
-
-		// for (int i = 0; i < holes.size()/2; i++){
-		// 	holes.get(i).setX(10+i);
-		// 	holes.get(i).setY(10+i);
-		// }
+		
 	}
 	
-	// public void translateHoles(int pos)
-	// {
-	// 	if(pos == 7 || pos == 0)
-	// 		return;
-		
-	// 	if(pos == 6)
-	// 	{
-	// 		holeX = 150;
-	// 		holeY = 100;
-	// 		return;
-	// 	}
-		
-	// 	holeX += 50;
-	// }
-	    public void paintIcon(Component c, Graphics g, int x, int y)
+	public void paintIcon(Component c, Graphics g, int x, int y)
 	    {
 	    	
 		Graphics2D g2 = (Graphics2D) g;
@@ -64,10 +48,31 @@ public class CircularBoard extends BoardLayout
 			holex += 130;
 		}
 
-		holex = 220;
+		holex = 865;
 		for (int i = 8; i < 14;i++){
 			this.holes.get(i).draw(g2, holex, holey2[i-7]);
-			holex += 130;
+			holex -= 130;
+		}
+
+		Font Labels = new Font("Arial", Font.PLAIN, 20);
+		g2.setFont(Labels);
+		g2.setColor(Color.RED);
+
+		g2.drawString("A", 80, 300);
+		g2.drawString("B", 1110, 300);
+
+		String [] sideA = {"A1", "A2", "A3", "A4", "A5", "A6", ""};
+		String [] sideB = {"B1", "B2", "B3", "B4", "B5", "B6", ""};
+		int stringX = 270;
+		for(int i = 0; i < 7; i++){
+			g2.drawString(sideA[i], stringX, 230);
+			stringX += 130;
+		}
+
+		stringX = 135;
+		for(int i = 6; i > -1; i--){
+			g2.drawString(sideB[i], stringX, 390);
+			stringX += 130;
 		}
 	}
 
