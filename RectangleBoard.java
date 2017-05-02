@@ -1,4 +1,5 @@
 
+
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -15,7 +16,6 @@ public class RectangleBoard extends BoardLayout
 	private ArrayList<Hole> holes;
 	private int pebbles;
 	private int holeX = 150;
-	private int holeY = 50;
 	private final double height = 600.0;
 	private final double width  = 1200.0;
 	
@@ -27,20 +27,7 @@ public class RectangleBoard extends BoardLayout
 
 	}
 	
-	public void translateHoles(int pos)
-	{
-		if(pos == 7 || pos == 0)
-			return;
-		
-		if(pos == 6)
-		{
-			holeX = 150;
-			holeY = 100;
-			return;
-		}
-		
-		holeX += 50;
-	}
+	
 	    public void paintIcon(Component c, Graphics g, int x, int y)
 	    {
 	    	

@@ -1,4 +1,5 @@
 
+
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 import javax.swing.Icon;
@@ -22,35 +23,27 @@ abstract class Hole
 	{
 		this.pebbles = pebbles;
 		this.arrPos = arrPos;
-		setCords();
 	}
 	
-	public void drawStones(Graphics2D g2)
-	{
-		for(int i = 0; i < pebbles; i++)
-		{
-			translatePebble();
-			Stone pebble = new Stone();
-			pebble.draw(g2, pebbleX, pebbleY);
-		}
-
-	}
 	
 	public int getArrPos()
 	{
 		return arrPos;
 	}
 	
-	public void setCords()
+	public void setX(int x)
 	{
-		
+		this.x = x;
 	}
 	
-	//move the x/y pos. of pebbles
-	public void translatePebble()
+	public void setY(int y)
 	{
-		//move around the pebbles inside the holes
-		//overide depending on mancala or pit
+		this.y = y;
+	}
+	//move the x/y pos. of pebbles
+	public void translatePebble(int x, int y, int z)
+	{
+		
 	}
 	
 	public void addListener()
@@ -68,21 +61,13 @@ abstract class Hole
 	{
 		return pebbles;
 	}
-	public boolean contains(int x, int y){
+	
+	public boolean contains(int x, int y)
+	{
 		return true;
 	}
-	public void setX(int x){
-		this.x = x;
-	}
-	public void setY(int y){
-		this.y = y;
-	}
-	public int getX(){
-		return this.x;
-	}
-	public int getY(){
-		return this.y;
-	}
+	
 	abstract public void draw(Graphics2D g2, int x, int y);
+	abstract public void drawStones(Graphics2D g2, int x, int y);
 
 }
