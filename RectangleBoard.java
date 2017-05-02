@@ -34,18 +34,18 @@ public class RectangleBoard extends BoardLayout
 		Graphics2D g2 = (Graphics2D) g;
 		Rectangle2D board = new Rectangle2D.Double(10.0,10.0,width,height);
 		g2.draw(board);
-		this.holes.get(0).setX(1030);
+		this.holes.get(0).setX(50);
 		this.holes.get(0).setY(120);
-		this.holes.get(0).draw(g2,1030,120);
+		this.holes.get(0).draw(g2,50,120);
 
 		this.holes.get(7).setY(120);
-		this.holes.get(7).setX(50);
-		this.holes.get(7).draw(g2,50,120);
+		this.holes.get(7).setX(1030);
+		this.holes.get(7).draw(g2,1030,120);
 
 		int xo = 180;
 		for (int i = 1; i < this.holes.size()/2;i++){
 			xo = xo + 10;
-			this.holes.get(i).draw(g2,xo,50);
+			this.holes.get(i).draw(g2,xo,450);
 			this.holes.get(i).setY(450);
 			this.holes.get(i).setX(xo);
 			xo = xo + 120 + 10;
@@ -55,7 +55,7 @@ public class RectangleBoard extends BoardLayout
 			xo = xo - 10;
 			this.holes.get(i).setX(xo);
 			this.holes.get(i).setY(50);
-			this.holes.get(i).draw(g2,xo,450);
+			this.holes.get(i).draw(g2,xo,50);
 			xo = xo - 120 - 10;
 		}
 

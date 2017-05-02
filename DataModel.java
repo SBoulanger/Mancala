@@ -29,8 +29,8 @@ public class DataModel
 		this.nStones = nStones;
 		this.holes = new ArrayList<Hole>();
 		this.listeners = new ArrayList<ChangeListener>();
-		A = new Mancala(0,0);
-		this.holes.add(A);
+		B  = new Mancala(0,0);
+		this.holes.add(B);
 		B1 = new Pit(nStones,1);
 		this.holes.add(B1);
 		B2 = new Pit(nStones,2);
@@ -43,8 +43,8 @@ public class DataModel
 		this.holes.add(B5);
 		B6 = new Pit(nStones,6);
 		this.holes.add(B6);
-		B  = new Mancala(0,7);
-		this.holes.add(B);
+		A = new Mancala(0,7);
+		this.holes.add(A);
 		A6 = new Pit(nStones,8);
 		this.holes.add(A6);
 		A5 = new Pit(nStones,9);
