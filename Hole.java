@@ -62,7 +62,10 @@ abstract class Hole
 	
 	public boolean contains(int x, int y)
 	{
-		return true;
+		if (x > this.x && x < this.x + 120 && y > this.y && y < this.y + 120){
+			return true;
+		}
+		return false;
 	}
 	
 	abstract public void draw(Graphics2D g2, int x, int y);

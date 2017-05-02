@@ -1,6 +1,8 @@
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
- 
+import java.awt.Color;
+import java.awt.Font;
+
  class Mancala extends Hole 
  {
 	
@@ -20,7 +22,8 @@ import java.awt.geom.Ellipse2D;
 	}
 	    
 	public void drawStones(Graphics2D g2, int x, int y)
-		{
+	{
+		if (this.getStones() < 5){
 			for(int i = 0; i < this.getStones(); i++)
 			{
 				translatePebble(x, y, i);
@@ -28,6 +31,14 @@ import java.awt.geom.Ellipse2D;
 				pebble.draw(g2, pebbleX, pebbleY);
 			}
 		}
+		else
+		{	
+			Font Title = new Font("Arial", Font.PLAIN, 50);
+		 	g2.setFont(Title);
+		 	g2.setColor(Color.black);
+			g2.drawString(this.getStones() + "", x + 45, y + 180);
+		}
+	}
 		
 	public void translatePebble(int x, int y, int z)
 		{
