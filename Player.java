@@ -1,4 +1,5 @@
 
-public enum Player {
+public enum Player 
+{
 	PLAYERA, PLAYERB
 }

@@ -35,16 +35,16 @@ public class CircularBoard extends BoardLayout
 		Ellipse2D board = new Ellipse2D.Double(10.0,10.0, 1180.0, 580.0);
 		g2.draw(board);
 
-		this.holes.get(0).setX(100);
-		this.holes.get(0).setY(120);
-		this.holes.get(0).draw(g2, 100, 120);
-		this.holes.get(7).setX(980);
+		this.holes.get(7).setX(100);
 		this.holes.get(7).setY(120);
-		this.holes.get(7).draw(g2, 980, 120);
+		this.holes.get(7).draw(g2, 100, 120);
+		this.holes.get(0).setX(980);
+		this.holes.get(0).setY(120);
+		this.holes.get(0).draw(g2, 980, 120);
 
 		int holex = 220;
-		int [] holey1 = {0, 80, 40, 20, 20, 40, 80};
-		int [] holey2 = {0, 400, 440, 460, 460, 440, 400};
+		int [] holey2 = {0, 80, 40, 20, 20, 40, 80};
+		int [] holey1 = {0, 400, 440, 460, 460, 440, 400};
 
 		for (int i = 1; i < 7;i++){
 			this.holes.get(i).setX(holex);
