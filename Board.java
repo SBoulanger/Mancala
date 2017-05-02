@@ -46,7 +46,7 @@ public class Board extends JFrame implements ChangeListener
 				y = e.getY();
 				
 				for (Hole h : holes){
-					if (!(h instanceof Mancala) && h.contains(x, y)){
+					if (!(h instanceof Mancala) && !h.contains(x, y)){
 						model.move(h.getArrPos());
 					}
 				}

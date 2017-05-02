@@ -44,11 +44,10 @@ public class RectangleBoard extends BoardLayout
 			xo = xo + 120 + 10;
 		}
 		this.holes.get(i++).draw(g2,xo,120);
-		xo = 50 + 120 + 10;
 		for (; i < this.holes.size();i++){
-			xo = xo + 10;
+			xo = xo - 10;
 			this.holes.get(i).draw(g2,xo,450);
-			xo = xo + 120 + 10;
+			xo = xo - 120 - 10;
 		}
 
 	}
