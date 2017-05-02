@@ -16,8 +16,8 @@ public class RectangleBoard extends BoardLayout
 	private int pebbles;
 	private int holeX = 150;
 	private int holeY = 50;
-	private final int height = 400;
-	private final int width  = 1000;
+	private final double height = 600.0;
+	private final double width  = 1200.0;
 	
 	public RectangleBoard(ArrayList<Hole> holes)
 	{
@@ -25,10 +25,6 @@ public class RectangleBoard extends BoardLayout
 
 		this.holes = holes;
 
-		for (int i = 0; i < holes.size()/2; i++){
-			holes.get(i).setX(10+i);
-			holes.get(i).setY(10+i);
-		}
 	}
 	
 	public void translateHoles(int pos)
@@ -47,12 +43,25 @@ public class RectangleBoard extends BoardLayout
 	}
 	public void paintIcon(Component c, Graphics g, int x, int y){
 		Graphics2D g2 = (Graphics2D) g;
-		Rectangle2D board = new Rectangle2D.Double(10.0,10.0,800.0,300.0);
+		Rectangle2D board = new Rectangle2D.Double(10.0,10.0,width,height);
 		g2.draw(board);
-
-		for (int i = 0; i < this.holes.size();i++){
-			this.holes.get(i).draw(g2,10,10);
+		int i = 0;
+		int xo = 50;
+		this.holes.get(i++).draw(g2,xo,120);
+		xo = xo + 120 + 10;
+		for (; i < this.holes.size()/2;i++){
+			xo = xo + 10;
+			this.holes.get(i).draw(g2,xo,50);
+			xo = xo + 120 + 10;
 		}
+		this.holes.get(i++).draw(g2,xo,120);
+		xo = 50 + 120 + 10;
+		for (; i < this.holes.size();i++){
+			xo = xo + 10;
+			this.holes.get(i).draw(g2,xo,450);
+			xo = xo + 120 + 10;
+		}
+
 	}
 
 	public 	int getIconWidth() 
