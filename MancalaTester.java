@@ -23,7 +23,7 @@ public class MancalaTester {
                 if(choice == 2){
                         b.attachBoardLayout(new CircularBoard(dm.getData()));
                 }
-                
+                dm.attachListener(b);
                 //JLabel myLabel = new JLabel();
                 //b.add(myLabel);
                 //b.setLayout(new FlowLayout());

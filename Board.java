@@ -38,6 +38,7 @@ public class Board extends JFrame implements ChangeListener
 		MouseListener ml = new MouseListener(){
 			public void mouseClicked(MouseEvent e) 
 			{
+				System.out.println("Mouse Clicked");
 				int x;
 				int y;
 				x = e.getX();
@@ -57,8 +58,8 @@ public class Board extends JFrame implements ChangeListener
 		};
 		
 		JPanel jp = new JPanel();
-		jp.addMouseListener(ml);
-		add(jp);
+		addMouseListener(ml);
+		//add(jp);
 		
 	}
 	public void attachBoardLayout(BoardLayout bl){
@@ -67,15 +68,9 @@ public class Board extends JFrame implements ChangeListener
 		jl.setPreferredSize(new Dimension(width, height));
 		add(jl);
 	}
-	//public void paintComponent(Graphics g){
-	//	layout.draw(g);
-	//}
-	
-	/*public void addChangeListener(ChangeListener listener){
-		model.attachListener(listener);
-	}*/
 	
 	public void stateChanged(ChangeEvent e){
+		//System.out.print("repaint called");
 		repaint();
 	}
 }
