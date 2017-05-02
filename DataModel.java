@@ -81,14 +81,14 @@ public class DataModel
 		 updateBoard();
 
 	}
-	private boolean isMancala(int position){
+	public boolean isMancala(int position){
 		if (this.holes.get(position) instanceof Mancala) {
 			return true;
 		}
 		return false;
 	}
 
-	private boolean isEmpty(int position){
+	public boolean isEmpty(int position){
 		return (this.holes.get(position).getStones() == 0);
 	}
 

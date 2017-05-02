@@ -29,13 +29,17 @@ public class CircularBoard extends BoardLayout
 	}
 	
 	public void paintIcon(Component c, Graphics g, int x, int y)
-	    {
+	{
 	    	
 		Graphics2D g2 = (Graphics2D) g;
 		Ellipse2D board = new Ellipse2D.Double(10.0,10.0, 1180.0, 580.0);
 		g2.draw(board);
 
+		this.holes.get(0).setX(100);
+		this.holes.get(0).setY(120);
 		this.holes.get(0).draw(g2, 100, 120);
+		this.holes.get(7).setX(980);
+		this.holes.get(7).setY(120);
 		this.holes.get(7).draw(g2, 980, 120);
 
 		int holex = 220;
@@ -43,12 +47,16 @@ public class CircularBoard extends BoardLayout
 		int [] holey2 = {0, 400, 440, 460, 460, 440, 400};
 
 		for (int i = 1; i < 7;i++){
+			this.holes.get(i).setX(holex);
+			this.holes.get(i).setY(holey1[i]);
 			this.holes.get(i).draw(g2, holex, holey1[i]);
 			holex += 130;
 		}
 
 		holex = 865;
 		for (int i = 8; i < 14;i++){
+			this.holes.get(i).setX(holex);
+			this.holes.get(i).setY(holey2[i-7]);
 			this.holes.get(i).draw(g2, holex, holey2[i-7]);
 			holex -= 130;
 		}

@@ -19,7 +19,7 @@ import java.awt.*;
 
 public class Board extends JFrame implements ChangeListener 
 {
-	DataModel model;
+	public DataModel model;
 	public BoardLayout layout;
 	public ArrayList<Hole> holes;
 	private boolean isPlayerA; //true = A, false = B
@@ -37,14 +37,13 @@ public class Board extends JFrame implements ChangeListener
 		MouseListener ml = new MouseListener(){
 			public void mouseClicked(MouseEvent e) 
 			{
-				System.out.println("Mouse Clicked");
 				int x;
 				int y;
 				x = e.getX();
 				y = e.getY();
 				
 				for (Hole h : holes){
-					if (!(h instanceof Mancala) && h.contains(x, y) && h.getStones() != 0){
+					if (!model.isMancala(h.getArrPos()) && h.contains(x, y) && !model.isEmpty(h.getArrPos())){
 						model.move(h.getArrPos());
 					}
 				}
@@ -69,7 +68,6 @@ public class Board extends JFrame implements ChangeListener
 	}
 	
 	public void stateChanged(ChangeEvent e){
-		//System.out.print("repaint called");
 		repaint();
 	}
 }
