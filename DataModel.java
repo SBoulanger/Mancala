@@ -44,7 +44,7 @@ public class DataModel
 		this.holes.add(B5);
 		B6 = new Pit(nStones,6);
 		this.holes.add(B6);
-		B  = new Mancala(nStones,7);
+		B  = new Mancala(0,7);
 		this.holes.add(B);
 		A6 = new Pit(nStones,8);
 		this.holes.add(A6);

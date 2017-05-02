@@ -18,16 +18,16 @@ class Pit extends Hole
 	public void draw(Graphics2D g2, int x, int y){
 		Ellipse2D hole = new Ellipse2D.Double(x, y, 120, 120);
         g2.draw(hole);
+        this.drawStones(g2, x, y);
 	}
 
 	public void drawStones(Graphics2D g2, int x, int y)
 	{
-		this.setStones(8);
 		if(this.getStones() < 5)
 		{
 			for(int i = 0; i < this.getStones(); i++)
 			{
-			
+				
 				translatePebble(x, y, i);
 				Stone pebble = new Stone();
 				pebble.draw(g2, pebbleX, pebbleY);	
@@ -45,8 +45,8 @@ class Pit extends Hole
 	{
 		
 		
-		pebbleX = (int) (Math.cos(z * 3.14f / 2 - 3.14f / 2) * 30 + (x + 50)); 
-		pebbleY = (int) (Math.sin(z * 3.14f / 2 - 3.14f / 2) * 30 + (y + 50));	
+		pebbleX = (int) (Math.cos(z * 3.14f / 2 - 3.14f / 2) * 30 + (x + 40)); 
+		pebbleY = (int) (Math.sin(z * 3.14f / 2 - 3.14f / 2) * 30 + (y + 40));	
 		
 		
 	}

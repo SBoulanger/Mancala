@@ -1,4 +1,3 @@
-package Mancala;
 
 
 import java.awt.Color;

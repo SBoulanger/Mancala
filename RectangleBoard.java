@@ -46,6 +46,7 @@ public class RectangleBoard extends BoardLayout
 		this.holes.get(i++).draw(g2,xo,120);
 		xo = 50 + 120 + 10;
 		for (; i < this.holes.size();i++){
+			System.out.println("here");
 			xo = xo + 10;
 			this.holes.get(i).draw(g2,xo,450);
 			xo = xo + 120 + 10;
