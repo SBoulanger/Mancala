@@ -18,7 +18,7 @@ public class MancalaTester {
                 System.out.println("Which layout would you like? (1) Rectangular (2) Circular");
                 int choice = scanner.nextInt();
                 if(choice == 1){
-                        b.attachBoardLayout(new RectangularBoard(dm.getData()));
+                        b.attachBoardLayout(new RectangleBoard(dm.getData()));
                 }
                 if(choice == 2){
                         b.attachBoardLayout(new CircularBoard(dm.getData()));
