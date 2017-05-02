@@ -1,4 +1,5 @@
 
+
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -16,8 +17,8 @@ public class RectangleBoard extends BoardLayout
 	private int pebbles;
 	private int holeX = 150;
 	private int holeY = 50;
-	private final int height = 400;
-	private final int width  = 1000;
+	private final int height = 600;
+	private final int width  = 1200;
 	
 	public RectangleBoard(ArrayList<Hole> holes)
 	{
@@ -49,7 +50,7 @@ public class RectangleBoard extends BoardLayout
 	    {
 	    	
 		Graphics2D g2 = (Graphics2D) g;
-		Rectangle2D board = new Rectangle2D.Double(10.0,10.0,800.0,300.0);
+		Rectangle2D board = new Rectangle2D.Double(10.0,10.0,width,height);
 		g2.draw(board);
 
 		for (int i = 0; i < this.holes.size();i++){
