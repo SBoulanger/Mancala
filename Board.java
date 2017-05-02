@@ -26,8 +26,8 @@ public class Board extends JFrame implements ChangeListener
 	private boolean isPlayerA; //true = A, false = B
 	private RectangleBoard rectBoard;
 
-	private int height = 800;
-	private int width = 1300;
+	private int height = 620;
+	private int width = 1220;
 
 	public Board(DataModel dm){
 		this.model = dm;
