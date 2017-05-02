@@ -41,7 +41,9 @@ public class RectangleBoard extends BoardLayout
 		
 		holeX += 50;
 	}
-	public void paintIcon(Component c, Graphics g, int x, int y){
+	    public void paintIcon(Component c, Graphics g, int x, int y)
+	    {
+	    	
 		Graphics2D g2 = (Graphics2D) g;
 		Rectangle2D board = new Rectangle2D.Double(10.0,10.0,width,height);
 		g2.draw(board);
