@@ -75,6 +75,7 @@ public class DataModel
 
 	public void move(int position){
 		 int addPosition = 0;
+		 saveState();
 		 int amount_stones = this.holes.get(position).getStones();
 		 this.holes.get(position).setStones(0);
 		 for (int i = 0; i < amount_stones;i++){
