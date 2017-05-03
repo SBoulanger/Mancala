@@ -54,7 +54,7 @@ public class Board extends JFrame implements ChangeListener
 							model.getPlayer().setJustWent();;
 							model.getOtherPlayer().setFirstTurn();
 							model.togglePlayer();
-							turnLabel.setText(model.getPlayer().toString());
+							turnLabel.setText("Undos left: "+(3-model.getPlayer().getUndos())+" "+model.getPlayer().toString());
 						}
 					}
 				} else {
@@ -66,7 +66,7 @@ public class Board extends JFrame implements ChangeListener
 							model.getPlayer().setJustWent();
 							model.getOtherPlayer().setFirstTurn();
 							model.togglePlayer();
-							turnLabel.setText(model.getPlayer().toString());
+							turnLabel.setText("Undos left: "+(3-model.getPlayer().getUndos())+" "+model.getPlayer().toString());
 						}
 					}
 				}
@@ -88,14 +88,15 @@ public class Board extends JFrame implements ChangeListener
 		jl.setPreferredSize(new Dimension(width, height));
 		add(jl,BorderLayout.CENTER);
 		JPanel panel = new JPanel();
-		turnLabel = new JLabel(model.getPlayer().toString());
+		turnLabel = new JLabel("Undos left: "+(3-model.getPlayer().getUndos())+" "+model.getPlayer().toString());
 		undoButton = new JButton("undo");
 		undoButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				if (model.getPlayer().canUndo()){
 					model.restorePastData();
 					model.togglePlayer();
-					turnLabel.setText(model.getPlayer().toString());
+					model.getPlayer().undid();
+					turnLabel.setText("Undos left: "+(3-model.getPlayer().getUndos())+" "+model.getPlayer().toString());
 					repaint();
 				}
 			}

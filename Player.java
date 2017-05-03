@@ -20,11 +20,17 @@ public enum Player
 		this.undos++;
 	}
 	public boolean canUndo(){
-		if (this.undos < 3 && checkFirstTurn()) {
+		if (this.getOtherPlayer().undos < 3 && checkFirstTurn()) {
 			return true;
 		}
 			
 		return false;
+	}
+	public Player getOtherPlayer(){
+		if (this == PLAYERA){
+			return PLAYERB;
+		}
+		return PLAYERA;	
 	}
 	
 	public boolean checkFirstTurn()
@@ -43,5 +49,8 @@ public enum Player
 	public void setFirstTurn()
 	{
 		turn = TURNCHECK.FIRSTTURN;
+	}
+	public int getUndos(){
+		return undos;
 	}
 }
