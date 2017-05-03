@@ -28,6 +28,7 @@ public enum Player
 			
 		return false;
 	}
+<<<<<<< HEAD
 	
 	public boolean checkFirstTurn()
 	{
@@ -59,4 +60,6 @@ public enum Player
 
 	}
 	
+=======
+>>>>>>> 958d8bab64ed352e52d8e904333d2c7dbadc7883
 }

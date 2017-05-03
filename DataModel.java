@@ -105,7 +105,7 @@ public class DataModel
 		 	
 		 }
 		 
-		  current = gameIsDone();
+		 current = gameIsDone();
 		 
 		 if(current != GAMECONDITION.CONTINUE)
 		 {
