@@ -106,7 +106,7 @@ public class DataModel
 		 	
 		 }
 		 
-		  current = gameIsDone();
+		 current = gameIsDone();
 		 
 		 if(current != GAMECONDITION.CONTINUE)
 		 {
@@ -146,12 +146,12 @@ public class DataModel
 	}
 	public void saveState(){
 		for (int i = 0; i < this.holes.size(); i++){
-			//this.pastHoles.set(i, this.holes.get(i).clone());
+			this.pastHoles.set(i, this.holes.get(i).clone());
 		}
 	}
 	public void cloneState(){
 		for (Hole h : holes){
-			//this.pastHoles.add(h.clone());
+			this.pastHoles.add(h.clone());
 		}
 	}
 	public void restorePastData(){
