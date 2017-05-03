@@ -7,6 +7,8 @@ import javax.swing.event.ChangeEvent;
 
 public class DataModel 
 {
+	private static final Player PLAYERA = null;
+	private static final Player PLAYERB = null;
 	ArrayList<Hole> holes;
 	ArrayList<ChangeListener> listeners;
 	private int nStones;
@@ -25,6 +27,8 @@ public class DataModel
 	private Pit B5;
 	private Pit B6;
 	private Mancala A;
+	private Player player;
+
 	
 	
 	enum GAMECONDITION
@@ -66,6 +70,7 @@ public class DataModel
 		this.holes.add(A2);
 		A1 = new Pit(nStones,13);
 		this.holes.add(A1);
+		player = Player.PLAYERA;
 	}
 	
 
@@ -81,11 +86,15 @@ public class DataModel
 		 	this.holes.get(addPosition).setStones(this.holes.get(addPosition).getStones()+1);
 		 }
 		 if (isMancala(addPosition)){
-		 	move(addPosition);
+		 	 move(addPosition);
 		 } else if (isEmpty(addPosition)){
 		 	int oppStones = this.holes.get(14 - addPosition).getStones();
 		 	this.holes.get(14 - addPosition).setStones(0);
-		 	this.holes.get(addPosition).setStones(this.holes.get(addPosition).getStones() + oppStones);
+		 	if(player == PLAYERA)
+		 	this.holes.get(7).setStones(this.holes.get(addPosition).getStones() + oppStones);
+		 	this.holes.get(0).setStones(this.holes.get(addPosition).getStones() + oppStones);
+
+		 	
 		 }
 		 
 		 GAMECONDITION current = gameIsDone();
@@ -150,6 +159,7 @@ public class DataModel
 	
 	public int getRemainingCount(GAMECONDITION player)
 	{
+		System.out.println("get remaining");
 		int j = 0;
 		int k = 0;
 		int count = 0;
@@ -183,6 +193,7 @@ public class DataModel
 		else if(holes.get(0).getStones() < holes.get(7).getStones())
 			return Player.PLAYERA;
 		else
+			//if tie
 			return null;
 			
 	}
@@ -212,5 +223,18 @@ public class DataModel
 	{
 		return this.holes;
 	}
+	
+	public Player getPlayer()
+	{
+		return player;
+	}
 
+	public void togglePLayer()
+	{
+		if(player == PLAYERA)
+			this.player = PLAYERB;
+		else
+			this.player = PLAYERA;
+			//turnLabel.setText(player.toString());
+	}
 }
