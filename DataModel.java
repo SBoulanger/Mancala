@@ -122,6 +122,10 @@ public class DataModel
 			}
 			
 			Player winner = whoWon();
+			
+			
+			RectangleBoard.dislayWinner(winner);
+				
 		 }
 		 
 		 updateBoard();

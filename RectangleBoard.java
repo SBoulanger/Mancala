@@ -18,6 +18,7 @@ public class RectangleBoard extends BoardLayout
 	private int holeX = 150;
 	private final double height = 600.0;
 	private final double width  = 1200.0;
+	private static Graphics2D g2;
 	
 	public RectangleBoard(ArrayList<Hole> holes)
 	{
@@ -32,6 +33,7 @@ public class RectangleBoard extends BoardLayout
 	{
 	    	
 		Graphics2D g2 = (Graphics2D) g;
+		this.g2 = g2;
 		Rectangle2D board = new Rectangle2D.Double(10.0,10.0,width,height);
 		g2.draw(board);
 		this.holes.get(0).setX(50);
@@ -80,6 +82,21 @@ public class RectangleBoard extends BoardLayout
 			stringX += 130;
 		}
 
+	}
+	
+	public static void dislayWinner(Player p)
+	{
+		String winner = "Player A!";
+		if(p == Player.PLAYERB)
+			winner = "Player B!";
+		
+		Font Labels = new Font("Arial", Font.PLAIN, 100);
+		g2.setFont(Labels);
+		g2.setColor(Color.BLACK);
+
+		g2.drawString("THE WINNER IS" + winner, 300, 500);
+			
+			
 	}
 
 	public 	int getIconWidth() 
