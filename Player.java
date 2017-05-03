@@ -11,7 +11,7 @@ public enum Player
 		this.undos++;
 	}
 	public boolean canUndo(){
-		if this.undos < 3 {
+		if (this.undos < 3) {
 			return true;
 		}
 		return false;
