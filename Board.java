@@ -22,7 +22,7 @@ public class Board extends JFrame implements ChangeListener
 	public DataModel model;
 	public BoardLayout layout;
 	public ArrayList<Hole> holes;
-	private boolean isPlayerA; //true = A, false = B
+	private Player player;
 	private RectangleBoard rectBoard;
 
 	private int height = 620;
@@ -33,6 +33,7 @@ public class Board extends JFrame implements ChangeListener
 		int n = model.getAmtStart();
 		this.holes = model.getData();
 
+		player = Player.PLAYERA;
 
 		MouseListener ml = new MouseListener(){
 			public void mouseClicked(MouseEvent e) 
@@ -41,10 +42,22 @@ public class Board extends JFrame implements ChangeListener
 				int y;
 				x = e.getX();
 				y = e.getY();
-				
-				for (Hole h : holes){
-					if (!model.isMancala(h.getArrPos()) && h.contains(x, y) && !model.isEmpty(h.getArrPos())){
-						model.move(h.getArrPos());
+				Hole h;
+				if (player == Player.PLAYERA){
+					for (int i = 7; i < holes.size(); i++){
+						h = holes.get(i);
+						if (!model.isMancala(h.getArrPos()) && h.contains(x, y) && !model.isEmpty(h.getArrPos())){
+							model.move(h.getArrPos());
+							player = Player.PLAYERB;
+						}
+					}
+				} else {
+					for (int i = 0; i < holes.size()/2; i++){
+						h = holes.get(i);
+						if (!model.isMancala(h.getArrPos()) && h.contains(x, y) && !model.isEmpty(h.getArrPos())){
+							model.move(h.getArrPos());
+							player = Player.PLAYERA;
+						}
 					}
 				}
 			}
@@ -57,7 +70,6 @@ public class Board extends JFrame implements ChangeListener
 		
 		JPanel jp = new JPanel();
 		addMouseListener(ml);
-		//add(jp);
 		
 	}
 	public void attachBoardLayout(BoardLayout bl){
