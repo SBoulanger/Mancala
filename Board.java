@@ -51,9 +51,9 @@ public class Board extends JFrame implements ChangeListener
 						if (!model.isMancala(h.getArrPos()) && h.contains(x, y) && !model.isEmpty(h.getArrPos())){
 							model.saveState();
 							model.move(h.getArrPos());
-							model.getPlayer().toggleHasMoved();
+							model.getPlayer().setJustWent();;
+							model.getOtherPlayer().setFirstTurn();
 							model.togglePlayer();
-							model.getPlayer().setMovedFalse();
 							turnLabel.setText(model.getPlayer().toString());
 						}
 					}
@@ -63,9 +63,9 @@ public class Board extends JFrame implements ChangeListener
 						if (!model.isMancala(h.getArrPos()) && h.contains(x, y) && !model.isEmpty(h.getArrPos())){
 							model.saveState();
 							model.move(h.getArrPos());
-							model.getPlayer().toggleHasMoved();
+							model.getPlayer().setJustWent();
+							model.getOtherPlayer().setFirstTurn();
 							model.togglePlayer();
-							model.getPlayer().setMovedFalse();
 							turnLabel.setText(model.getPlayer().toString());
 						}
 					}
@@ -96,7 +96,6 @@ public class Board extends JFrame implements ChangeListener
 					model.restorePastData();
 					model.togglePlayer();
 					turnLabel.setText(model.getPlayer().toString());
-					model.getPlayer().undid();
 					repaint();
 				}
 			}

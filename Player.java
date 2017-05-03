@@ -1,35 +1,47 @@
 
 public enum Player 
 {
+	
 	PLAYERA(0), PLAYERB(0);
+	
+	enum TURNCHECK
+	{
+		JUSTWENT, FIRSTTURN,
+	};
+	
 	private int undos;
-	private boolean hasmoved;
+	private Player p;
+	private TURNCHECK turn;
 	private Player(int n){
 		undos = n;
-		hasmoved = false;
 	}
 	public String toString(){ if (this == PLAYERA) {return "Player A";} else {return "Player B";}}
 	public void undid(){
-		hasmoved = false;
 		this.undos++;
 	}
 	public boolean canUndo(){
-		if (this.undos < 3 && getOtherPlayer().hasmoved) {
+		if (this.undos < 3 && checkFirstTurn()) {
 			return true;
 		}
+			
 		return false;
 	}
-	public void toggleHasMoved(){
-		hasmoved = !hasmoved;
+	
+	public boolean checkFirstTurn()
+	{
+		if(turn == TURNCHECK.JUSTWENT)
+			return false;
+		return true;
+					
 	}
-	public Player getOtherPlayer(){
-		if (this == Player.PLAYERA){
-			return Player.PLAYERB;
-		} else {
-			return Player.PLAYERA;
-		}
+	
+	public void setJustWent()
+	{
+		turn = TURNCHECK.JUSTWENT;
 	}
-	public void setMovedFalse(){
-		hasmoved = false;
+	
+	public void setFirstTurn()
+	{
+		turn = TURNCHECK.FIRSTTURN;
 	}
 }

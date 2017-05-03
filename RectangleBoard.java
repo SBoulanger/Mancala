@@ -29,7 +29,6 @@ public class RectangleBoard extends BoardLayout
 	{
 	    	
 		Graphics2D g2 = (Graphics2D) g;
-		//displayTurn(model.getPlayer(), g2);
 		Rectangle2D board = new Rectangle2D.Double(10.0,10.0,width,height);
 		g2.draw(board);
 		this.holes.get(0).setX(50);
