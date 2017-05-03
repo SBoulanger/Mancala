@@ -1,9 +1,10 @@
+import java.awt.Color;
+import java.awt.Font;
 import java.util.ArrayList;
 
-import javax.swing.event.ChangeListener;
-
-
+import javax.swing.JFrame;
 import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class DataModel 
 {
@@ -26,6 +27,7 @@ public class DataModel
 	private Pit B5;
 	private Pit B6;
 	private Mancala A;
+
 
 	private Player player;
 
@@ -80,6 +82,8 @@ public class DataModel
 	
 
 	public void move(int position){
+		GAMECONDITION current;
+		Player winner = null;
 		 int addPosition = 0;
 		 int amount_stones = this.holes.get(position).getStones();
 		 this.holes.get(position).setStones(0);
@@ -102,7 +106,7 @@ public class DataModel
 		 	
 		 }
 		 
-		 GAMECONDITION current = gameIsDone();
+		  current = gameIsDone();
 		 
 		 if(current != GAMECONDITION.CONTINUE)
 		 {
@@ -126,20 +130,28 @@ public class DataModel
 				
 			}
 			
-			Player winner = whoWon();
+			winner = whoWon();
+			
+			
+				
 		 }
-		 
 		 updateBoard();
+		 if(current != GAMECONDITION.CONTINUE)
+		 {
+			 RectangleBoard.dislayWinner(winner);
+		 }
+				
+
 
 	}
 	public void saveState(){
 		for (int i = 0; i < this.holes.size(); i++){
-			this.pastHoles.set(i, this.holes.get(i).clone());
+			//this.pastHoles.set(i, this.holes.get(i).clone());
 		}
 	}
 	public void cloneState(){
 		for (Hole h : holes){
-			this.pastHoles.add(h.clone());
+			//this.pastHoles.add(h.clone());
 		}
 	}
 	public void restorePastData(){
@@ -208,11 +220,18 @@ public class DataModel
 
 	public Player whoWon()
 	{
-		if(holes.get(0).getStones() > holes.get(7).getStones())
+		if(holes.get(0).getStones() < holes.get(7).getStones())
+		{
+			System.out.println("player b won");
 			return Player.PLAYERB;
-		else if(holes.get(0).getStones() < holes.get(7).getStones())
+
+		}
+		else if(holes.get(0).getStones() > holes.get(7).getStones())
+		{
+			System.out.println("player a won");
 			return Player.PLAYERA;
-		else
+		}
+		
 			//if tie
 			return null;
 			
