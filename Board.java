@@ -49,6 +49,7 @@ public class Board extends JFrame implements ChangeListener
 					for (int i = 7; i < holes.size(); i++){
 						h = holes.get(i);
 						if (!model.isMancala(h.getArrPos()) && h.contains(x, y) && !model.isEmpty(h.getArrPos())){
+							model.saveState();
 							model.move(h.getArrPos());
 							model.togglePlayer();
 							turnLabel.setText(model.getPlayer().toString());
@@ -58,6 +59,7 @@ public class Board extends JFrame implements ChangeListener
 					for (int i = 0; i < holes.size()/2; i++){
 						h = holes.get(i);
 						if (!model.isMancala(h.getArrPos()) && h.contains(x, y) && !model.isEmpty(h.getArrPos())){
+							model.saveState();
 							model.move(h.getArrPos());
 							model.togglePlayer();
 							turnLabel.setText(model.getPlayer().toString());
@@ -86,12 +88,12 @@ public class Board extends JFrame implements ChangeListener
 		undoButton = new JButton("undo");
 		undoButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				holes = pastHoles;
+				model.restorePastData();
 				model.togglePlayer();
 				turnLabel.setText(model.getPlayer().toString());
 				repaint();
 			}
-		})
+		});
 		panel.add(turnLabel);
 		panel.add(undoButton);
 		add(panel,BorderLayout.SOUTH);

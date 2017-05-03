@@ -26,6 +26,9 @@ public class DataModel
 	private Pit B5;
 	private Pit B6;
 	private Mancala A;
+
+	private Player player;
+
 	
 	
 	enum GAMECONDITION
@@ -69,13 +72,15 @@ public class DataModel
 		this.holes.add(A1);
 
 		this.pastHoles = new ArrayList<Hole>();
-		saveState();
+		cloneState();
+
+		player = Player.PLAYERA;
+
 	}
 	
 
 	public void move(int position){
 		 int addPosition = 0;
-		 saveState();
 		 int amount_stones = this.holes.get(position).getStones();
 		 this.holes.get(position).setStones(0);
 		 for (int i = 0; i < amount_stones;i++){
@@ -86,11 +91,15 @@ public class DataModel
 		 	this.holes.get(addPosition).setStones(this.holes.get(addPosition).getStones()+1);
 		 }
 		 if (isMancala(addPosition)){
-		 	move(addPosition);
+		 	 move(addPosition);
 		 } else if (isEmpty(addPosition)){
 		 	int oppStones = this.holes.get(14 - addPosition).getStones();
 		 	this.holes.get(14 - addPosition).setStones(0);
-		 	this.holes.get(addPosition).setStones(this.holes.get(addPosition).getStones() + oppStones);
+		 	if(player == Player.PLAYERA)
+		 	this.holes.get(7).setStones(this.holes.get(addPosition).getStones() + oppStones);
+		 	this.holes.get(0).setStones(this.holes.get(addPosition).getStones() + oppStones);
+
+		 	
 		 }
 		 
 		 GAMECONDITION current = gameIsDone();
@@ -128,6 +137,16 @@ public class DataModel
 			this.pastHoles.set(i, this.holes.get(i).clone());
 		}
 	}
+	public void cloneState(){
+		for (Hole h : holes){
+			this.pastHoles.add(h.clone());
+		}
+	}
+	public void restorePastData(){
+		for (int i = 0; i < this.holes.size(); i++){
+			this.holes.set(i, this.pastHoles.get(i));
+		}
+	}
 	
 	public GAMECONDITION gameIsDone()
 	{
@@ -160,6 +179,7 @@ public class DataModel
 	
 	public int getRemainingCount(GAMECONDITION player)
 	{
+		System.out.println("get remaining");
 		int j = 0;
 		int k = 0;
 		int count = 0;
@@ -193,6 +213,7 @@ public class DataModel
 		else if(holes.get(0).getStones() < holes.get(7).getStones())
 			return Player.PLAYERA;
 		else
+			//if tie
 			return null;
 			
 	}
@@ -222,5 +243,20 @@ public class DataModel
 	{
 		return this.holes;
 	}
+	
+	public Player getPlayer()
+	{
+		return player;
+	}
 
+	public void togglePlayer()
+	{
+		if(player == Player.PLAYERA)
+			this.player = Player.PLAYERB;
+		else
+			this.player = Player.PLAYERA;
+	}
+	public ArrayList<Hole> getPastData(){
+		return this.pastHoles;
+	}
 }
