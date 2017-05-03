@@ -22,8 +22,11 @@ public class Board extends JFrame implements ChangeListener
 	public DataModel model;
 	public BoardLayout layout;
 	public ArrayList<Hole> holes;
-	private boolean isPlayerA; //true = A, false = B
+	private Player player;
 	private RectangleBoard rectBoard;
+
+	private JLabel turnLabel;
+	private JButton undoButton;
 
 	private int height = 620;
 	private int width = 1220;
@@ -33,6 +36,9 @@ public class Board extends JFrame implements ChangeListener
 		int n = model.getAmtStart();
 		this.holes = model.getData();
 
+		player = Player.PLAYERA;
+
+		setLayout(new BorderLayout());
 
 		MouseListener ml = new MouseListener(){
 			public void mouseClicked(MouseEvent e) 
@@ -41,10 +47,24 @@ public class Board extends JFrame implements ChangeListener
 				int y;
 				x = e.getX();
 				y = e.getY();
-				
-				for (Hole h : holes){
-					if (!model.isMancala(h.getArrPos()) && h.contains(x, y) && !model.isEmpty(h.getArrPos())){
-						model.move(h.getArrPos());
+				Hole h;
+				if (player == Player.PLAYERA){
+					for (int i = 7; i < holes.size(); i++){
+						h = holes.get(i);
+						if (!model.isMancala(h.getArrPos()) && h.contains(x, y) && !model.isEmpty(h.getArrPos())){
+							model.move(h.getArrPos());
+							player = Player.PLAYERB;
+							turnLabel.setText(player.toString());
+						}
+					}
+				} else {
+					for (int i = 0; i < holes.size()/2; i++){
+						h = holes.get(i);
+						if (!model.isMancala(h.getArrPos()) && h.contains(x, y) && !model.isEmpty(h.getArrPos())){
+							model.move(h.getArrPos());
+							player = Player.PLAYERA;
+							turnLabel.setText(player.toString());
+						}
 					}
 				}
 			}
@@ -57,14 +77,19 @@ public class Board extends JFrame implements ChangeListener
 		
 		JPanel jp = new JPanel();
 		addMouseListener(ml);
-		//add(jp);
 		
 	}
 	public void attachBoardLayout(BoardLayout bl){
 		this.layout = bl;
 		JLabel jl = new JLabel(bl);
 		jl.setPreferredSize(new Dimension(width, height));
-		add(jl);
+		add(jl,BorderLayout.CENTER);
+		JPanel panel = new JPanel();
+		turnLabel = new JLabel(player.toString());
+		undoButton = new JButton("undo");
+		panel.add(turnLabel);
+		panel.add(undoButton);
+		add(panel,BorderLayout.SOUTH);
 	}
 	
 	public void stateChanged(ChangeEvent e){
