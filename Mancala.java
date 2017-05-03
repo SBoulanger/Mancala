@@ -1,7 +1,8 @@
-import java.awt.Graphics2D;
-import java.awt.geom.Ellipse2D;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.geom.Ellipse2D;
+import java.util.Random;
 
  class Mancala extends Hole 
  {
@@ -17,15 +18,21 @@ import java.awt.Font;
 	}
 	public void draw(Graphics2D g2, int x, int y){
 		Ellipse2D hole = new Ellipse2D.Double(x, y, 120, 360);
-        this.drawStones(g2, x, y);
+		Color color2 = new Color(145, 107, 66);
+		g2.setColor(color2);
         g2.draw(hole);
+        g2.fill(hole);
+        this.drawStones(g2, x, y);
+
 	}
 	    
 	public void drawStones(Graphics2D g2, int x, int y)
-	{
+	{ 
+		
 		if (this.getStones() < 5){
 			for(int i = 0; i < this.getStones(); i++)
 			{
+				
 				translatePebble(x, y, i);
 				Stone pebble = new Stone();
 				pebble.draw(g2, pebbleX, pebbleY);

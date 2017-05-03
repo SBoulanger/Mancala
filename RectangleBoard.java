@@ -29,8 +29,13 @@ public class RectangleBoard extends BoardLayout
 	{
 	    	
 		Graphics2D g2 = (Graphics2D) g;
+		Color color1 = new Color(163, 123, 80);
+		g2.setColor(color1);
 		Rectangle2D board = new Rectangle2D.Double(10.0,10.0,width,height);
 		g2.draw(board);
+		g2.fill(board);
+		Color color2 = new Color(145, 107, 66);
+		g2.setColor(color2);
 		this.holes.get(0).setX(50);
 		this.holes.get(0).setY(120);
 		this.holes.get(0).draw(g2,50,120);
@@ -67,13 +72,13 @@ public class RectangleBoard extends BoardLayout
 		String [] sideB = {"B1", "B2", "B3", "B4", "B5", "B6", ""};
 		int stringX = 270;
 		for(int j = 0; j < 7; j++){
-			g2.drawString(sideA[j], stringX, 230);
+			g2.drawString(sideB[j], stringX, 230);
 			stringX += 130;
 		}
 
 		stringX = 135;
 		for(int j = 6; j > -1; j--){
-			g2.drawString(sideB[j], stringX, 390);
+			g2.drawString(sideA[j], stringX, 390);
 			stringX += 130;
 		}
 		
