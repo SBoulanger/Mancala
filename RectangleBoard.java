@@ -1,14 +1,13 @@
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.geom.Ellipse2D;
-import java.util.ArrayList;
 import java.awt.geom.Rectangle2D;
-import javax.swing.Icon;
-import java.awt.geom.GeneralPath;
-import java.awt.Color;
-import java.awt.Font;
+import java.util.ArrayList;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class RectangleBoard extends BoardLayout
 {
@@ -23,17 +22,14 @@ public class RectangleBoard extends BoardLayout
 	public RectangleBoard(ArrayList<Hole> holes)
 	{
 		super();
-
 		this.holes = holes;
-
 	}
-	
 	
 	public void paintIcon(Component c, Graphics g, int x, int y)
 	{
 	    	
 		Graphics2D g2 = (Graphics2D) g;
-		this.g2 = g2;
+		//displayTurn(model.getPlayer(), g2);
 		Rectangle2D board = new Rectangle2D.Double(10.0,10.0,width,height);
 		g2.draw(board);
 		this.holes.get(0).setX(50);
@@ -81,23 +77,36 @@ public class RectangleBoard extends BoardLayout
 			g2.drawString(sideB[j], stringX, 390);
 			stringX += 130;
 		}
+		
+		this.g2 = g2;
+
 
 	}
 	
 	public static void dislayWinner(Player p)
 	{
-		String winner = "Player A!";
+		JFrame wf = new JFrame();
+		 
+		String winner = "PLAYER A!";
 		if(p == Player.PLAYERB)
-			winner = "Player B!";
+			winner = "PLAYER B!";
 		
 		Font Labels = new Font("Arial", Font.PLAIN, 100);
 		g2.setFont(Labels);
 		g2.setColor(Color.BLACK);
 
-		g2.drawString("THE WINNER IS" + winner, 300, 500);
-			
-			
+		System.out.println("THE WINNER IS " + winner);
+		
+		
+		JLabel label = new JLabel("THE WINNER IS " + winner);
+		wf.add(label);
+		
+		wf.pack();
+        wf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        wf.setVisible(true);		
 	}
+	
+	
 
 	public 	int getIconWidth() 
 	{

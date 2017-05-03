@@ -1,15 +1,15 @@
+import java.awt.Color;
+import java.awt.Font;
 import java.util.ArrayList;
 
-import javax.swing.event.ChangeListener;
-
-
+import javax.swing.JFrame;
 import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class DataModel 
 {
-	private static final Player PLAYERA = null;
-	private static final Player PLAYERB = null;
 	ArrayList<Hole> holes;
+	ArrayList<Hole> pastHoles;
 	ArrayList<ChangeListener> listeners;
 	private int nStones;
 	
@@ -27,6 +27,8 @@ public class DataModel
 	private Pit B5;
 	private Pit B6;
 	private Mancala A;
+
+
 	private Player player;
 
 	
@@ -70,11 +72,18 @@ public class DataModel
 		this.holes.add(A2);
 		A1 = new Pit(nStones,13);
 		this.holes.add(A1);
+
+		this.pastHoles = new ArrayList<Hole>();
+		cloneState();
+
 		player = Player.PLAYERA;
+
 	}
 	
 
 	public void move(int position){
+		GAMECONDITION current;
+		Player winner = null;
 		 int addPosition = 0;
 		 int amount_stones = this.holes.get(position).getStones();
 		 this.holes.get(position).setStones(0);
@@ -90,14 +99,14 @@ public class DataModel
 		 } else if (isEmpty(addPosition)){
 		 	int oppStones = this.holes.get(14 - addPosition).getStones();
 		 	this.holes.get(14 - addPosition).setStones(0);
-		 	if(player == PLAYERA)
+		 	if(player == Player.PLAYERA)
 		 	this.holes.get(7).setStones(this.holes.get(addPosition).getStones() + oppStones);
 		 	this.holes.get(0).setStones(this.holes.get(addPosition).getStones() + oppStones);
 
 		 	
 		 }
 		 
-		 GAMECONDITION current = gameIsDone();
+		  current = gameIsDone();
 		 
 		 if(current != GAMECONDITION.CONTINUE)
 		 {
@@ -121,15 +130,34 @@ public class DataModel
 				
 			}
 			
-			Player winner = whoWon();
+			winner = whoWon();
 			
 			
-			RectangleBoard.dislayWinner(winner);
 				
 		 }
-		 
 		 updateBoard();
+		 if(current != GAMECONDITION.CONTINUE)
+		 {
+			 RectangleBoard.dislayWinner(winner);
+		 }
+				
 
+
+	}
+	public void saveState(){
+		for (int i = 0; i < this.holes.size(); i++){
+			//this.pastHoles.set(i, this.holes.get(i).clone());
+		}
+	}
+	public void cloneState(){
+		for (Hole h : holes){
+			//this.pastHoles.add(h.clone());
+		}
+	}
+	public void restorePastData(){
+		for (int i = 0; i < this.holes.size(); i++){
+			this.holes.set(i, this.pastHoles.get(i));
+		}
 	}
 	
 	public GAMECONDITION gameIsDone()
@@ -192,11 +220,18 @@ public class DataModel
 
 	public Player whoWon()
 	{
-		if(holes.get(0).getStones() > holes.get(7).getStones())
+		if(holes.get(0).getStones() < holes.get(7).getStones())
+		{
+			System.out.println("player b won");
 			return Player.PLAYERB;
-		else if(holes.get(0).getStones() < holes.get(7).getStones())
+
+		}
+		else if(holes.get(0).getStones() > holes.get(7).getStones())
+		{
+			System.out.println("player a won");
 			return Player.PLAYERA;
-		else
+		}
+		
 			//if tie
 			return null;
 			
@@ -233,12 +268,14 @@ public class DataModel
 		return player;
 	}
 
-	public void togglePLayer()
+	public void togglePlayer()
 	{
-		if(player == PLAYERA)
-			this.player = PLAYERB;
+		if(player == Player.PLAYERA)
+			this.player = Player.PLAYERB;
 		else
-			this.player = PLAYERA;
-			//turnLabel.setText(player.toString());
+			this.player = Player.PLAYERA;
+	}
+	public ArrayList<Hole> getPastData(){
+		return this.pastHoles;
 	}
 }

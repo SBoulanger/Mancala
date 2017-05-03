@@ -3,8 +3,10 @@ import java.awt.geom.Ellipse2D;
 import javax.swing.Icon;
 import java.awt.Component;
 import java.awt.Graphics;
+import java.lang.Cloneable;
+import java.lang.CloneNotSupportedException;
 
-abstract class Hole
+abstract class Hole implements Cloneable
 {
 
 	private int x;
@@ -14,7 +16,7 @@ abstract class Hole
 	private int pebbleY;
 	private int arrPos;
 	
-	int[][] holePos = new int[14][2]; //initialize to actual drawn positions
+	int[][] holePos = new int[14][2];
 
 	
 	public Hole(int pebbles, int arrPos)
@@ -47,6 +49,15 @@ abstract class Hole
 	public void addListener()
 	{
 		
+	}
+
+	public Hole clone(){
+		try {
+			Hole hole = (Hole)super.clone();
+			return hole;
+		} catch (CloneNotSupportedException e){
+			return null;
+		}
 	}
 	
 	

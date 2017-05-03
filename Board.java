@@ -22,7 +22,6 @@ public class Board extends JFrame implements ChangeListener
 	public DataModel model;
 	public BoardLayout layout;
 	public ArrayList<Hole> holes;
-	private Player player;
 	private RectangleBoard rectBoard;
 
 	private JLabel turnLabel;
@@ -36,8 +35,6 @@ public class Board extends JFrame implements ChangeListener
 		int n = model.getAmtStart();
 		this.holes = model.getData();
 
-		player = Player.PLAYERA;
-
 		setLayout(new BorderLayout());
 
 		MouseListener ml = new MouseListener(){
@@ -48,22 +45,24 @@ public class Board extends JFrame implements ChangeListener
 				x = e.getX();
 				y = e.getY();
 				Hole h;
-				if (player == Player.PLAYERA){
+				if (model.getPlayer() == Player.PLAYERA){
 					for (int i = 7; i < holes.size(); i++){
 						h = holes.get(i);
 						if (!model.isMancala(h.getArrPos()) && h.contains(x, y) && !model.isEmpty(h.getArrPos())){
+							model.saveState();
 							model.move(h.getArrPos());
-							player = Player.PLAYERB;
-							turnLabel.setText(player.toString());
+							model.togglePlayer();
+							turnLabel.setText(model.getPlayer().toString());
 						}
 					}
 				} else {
 					for (int i = 0; i < holes.size()/2; i++){
 						h = holes.get(i);
 						if (!model.isMancala(h.getArrPos()) && h.contains(x, y) && !model.isEmpty(h.getArrPos())){
+							model.saveState();
 							model.move(h.getArrPos());
-							player = Player.PLAYERA;
-							turnLabel.setText(player.toString());
+							model.togglePlayer();
+							turnLabel.setText(model.getPlayer().toString());
 						}
 					}
 				}
@@ -85,13 +84,23 @@ public class Board extends JFrame implements ChangeListener
 		jl.setPreferredSize(new Dimension(width, height));
 		add(jl,BorderLayout.CENTER);
 		JPanel panel = new JPanel();
-		turnLabel = new JLabel(player.toString());
+		turnLabel = new JLabel(model.getPlayer().toString());
 		undoButton = new JButton("undo");
+		undoButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				if (model.getPlayer().canUndo()){
+					model.restorePastData();
+					model.getPlayer().undid();
+					model.togglePlayer();
+					turnLabel.setText(model.getPlayer().toString());
+					repaint();
+				}
+			}
+		});
 		panel.add(turnLabel);
 		panel.add(undoButton);
 		add(panel,BorderLayout.SOUTH);
 	}
-	
 	public void stateChanged(ChangeEvent e){
 		repaint();
 	}
