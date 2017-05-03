@@ -65,8 +65,8 @@ public class CircularBoard extends BoardLayout
 		g2.setFont(Labels);
 		g2.setColor(Color.RED);
 
-		g2.drawString("A", 80, 300);
-		g2.drawString("B", 1110, 300);
+		g2.drawString("B", 80, 300);
+		g2.drawString("A", 1110, 300);
 
 		String [] sideA = {"A1", "A2", "A3", "A4", "A5", "A6", ""};
 		String [] sideB = {"B1", "B2", "B3", "B4", "B5", "B6", ""};

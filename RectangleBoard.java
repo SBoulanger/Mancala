@@ -60,8 +60,8 @@ public class RectangleBoard extends BoardLayout
 		g2.setFont(Labels);
 		g2.setColor(Color.RED);
 
-		g2.drawString("A", 20, 300);
-		g2.drawString("B", 1170, 300);
+		g2.drawString("B", 20, 300);
+		g2.drawString("A", 1170, 300);
 
 		String [] sideA = {"A1", "A2", "A3", "A4", "A5", "A6", ""};
 		String [] sideB = {"B1", "B2", "B3", "B4", "B5", "B6", ""};
