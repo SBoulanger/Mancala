@@ -25,6 +25,9 @@ public class Board extends JFrame implements ChangeListener
 	private Player player;
 	private RectangleBoard rectBoard;
 
+	private JLabel turnLabel;
+	private JButton undoButton;
+
 	private int height = 620;
 	private int width = 1220;
 
@@ -34,6 +37,8 @@ public class Board extends JFrame implements ChangeListener
 		this.holes = model.getData();
 
 		player = Player.PLAYERA;
+
+		setLayout(new BorderLayout());
 
 		MouseListener ml = new MouseListener(){
 			public void mouseClicked(MouseEvent e) 
@@ -49,6 +54,7 @@ public class Board extends JFrame implements ChangeListener
 						if (!model.isMancala(h.getArrPos()) && h.contains(x, y) && !model.isEmpty(h.getArrPos())){
 							model.move(h.getArrPos());
 							player = Player.PLAYERB;
+							turnLabel.setText(player.toString());
 						}
 					}
 				} else {
@@ -57,6 +63,7 @@ public class Board extends JFrame implements ChangeListener
 						if (!model.isMancala(h.getArrPos()) && h.contains(x, y) && !model.isEmpty(h.getArrPos())){
 							model.move(h.getArrPos());
 							player = Player.PLAYERA;
+							turnLabel.setText(player.toString());
 						}
 					}
 				}
@@ -76,7 +83,13 @@ public class Board extends JFrame implements ChangeListener
 		this.layout = bl;
 		JLabel jl = new JLabel(bl);
 		jl.setPreferredSize(new Dimension(width, height));
-		add(jl);
+		add(jl,BorderLayout.CENTER);
+		JPanel panel = new JPanel();
+		turnLabel = new JLabel(player.toString());
+		undoButton = new JButton("undo");
+		panel.add(turnLabel);
+		panel.add(undoButton);
+		add(panel,BorderLayout.SOUTH);
 	}
 	
 	public void stateChanged(ChangeEvent e){
