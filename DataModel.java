@@ -102,7 +102,6 @@ public class DataModel
 		 	if(player == Player.PLAYERA)
 		 	this.holes.get(7).setStones(this.holes.get(addPosition).getStones() + oppStones);
 		 	this.holes.get(0).setStones(this.holes.get(addPosition).getStones() + oppStones);
-
 		 	
 		 }
 		 
@@ -136,6 +135,7 @@ public class DataModel
 				
 		 }
 		 updateBoard();
+
 		 if(current != GAMECONDITION.CONTINUE)
 		 {
 			 RectangleBoard.dislayWinner(winner);
@@ -146,12 +146,12 @@ public class DataModel
 	}
 	public void saveState(){
 		for (int i = 0; i < this.holes.size(); i++){
-			//this.pastHoles.set(i, this.holes.get(i).clone());
+			this.pastHoles.set(i, this.holes.get(i).clone());
 		}
 	}
 	public void cloneState(){
 		for (Hole h : holes){
-			//this.pastHoles.add(h.clone());
+			this.pastHoles.add(h.clone());
 		}
 	}
 	public void restorePastData(){
@@ -271,9 +271,23 @@ public class DataModel
 	public void togglePlayer()
 	{
 		if(player == Player.PLAYERA)
+		{
+		
 			this.player = Player.PLAYERB;
+			
+		}
 		else
+		{
 			this.player = Player.PLAYERA;
+		}
+	}
+	
+	public Player getOtherPlayer()
+	{
+		if(player == Player.PLAYERA)
+			return Player.PLAYERB;
+		
+		return Player.PLAYERA;
 	}
 	public ArrayList<Hole> getPastData(){
 		return this.pastHoles;
