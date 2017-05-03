@@ -22,11 +22,8 @@ public class RectangleBoard extends BoardLayout
 	public RectangleBoard(ArrayList<Hole> holes)
 	{
 		super();
-
 		this.holes = holes;
-
 	}
-	
 	
 	public void paintIcon(Component c, Graphics g, int x, int y)
 	{

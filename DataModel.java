@@ -6,6 +6,7 @@ import javax.swing.event.ChangeEvent;
 public class DataModel 
 {
 	ArrayList<Hole> holes;
+	ArrayList<Hole> pastHoles;
 	ArrayList<ChangeListener> listeners;
 	private int nStones;
 	
@@ -57,6 +58,9 @@ public class DataModel
 		this.holes.add(A2);
 		A1 = new Pit(nStones,13);
 		this.holes.add(A1);
+
+		this.pastHoles = new ArrayList<Hole>();
+		saveState();
 	}
 	
 
@@ -81,6 +85,13 @@ public class DataModel
 		 updateBoard();
 
 	}
+
+	public void saveState(){
+		for (int i = 0; i < this.holes.size(); i++){
+			this.pastHoles.set(i, this.holes.get(i).clone());
+		}
+	}
+
 	public boolean isMancala(int position){
 		if (this.holes.get(position) instanceof Mancala) {
 			return true;
