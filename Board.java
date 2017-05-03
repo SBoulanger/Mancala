@@ -88,10 +88,13 @@ public class Board extends JFrame implements ChangeListener
 		undoButton = new JButton("undo");
 		undoButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				model.restorePastData();
-				model.togglePlayer();
-				turnLabel.setText(model.getPlayer().toString());
-				repaint();
+				if (model.getPlayer().canUndo()){
+					model.restorePastData();
+					model.getPlayer().undid();
+					model.togglePlayer();
+					turnLabel.setText(model.getPlayer().toString());
+					repaint();
+				}
 			}
 		});
 		panel.add(turnLabel);
