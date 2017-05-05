@@ -35,7 +35,7 @@ import java.util.Random;
 				
 				translatePebble(x, y, i);
 				Stone pebble = new Stone();
-				pebble.draw(g2, pebbleX, pebbleY);
+				pebble.draw(g2, pebbleX, pebbleY, i);
 			}
 		}
 		else

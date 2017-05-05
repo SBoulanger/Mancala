@@ -60,18 +60,19 @@ public class DataModel
 		this.holes.add(B6);
 		B  = new Mancala(0,7);
 		this.holes.add(B);
-		A6 = new Pit(nStones,8);
-		this.holes.add(A6);
-		A5 = new Pit(nStones,9);
-		this.holes.add(A5);
-		A4 = new Pit(nStones,10);
-		this.holes.add(A4);
-		A3 = new Pit(nStones,11);
-		this.holes.add(A3);
-		A2 = new Pit(nStones,12);
-		this.holes.add(A2);
-		A1 = new Pit(nStones,13);
+		A1 = new Pit(nStones,8);
 		this.holes.add(A1);
+		A2 = new Pit(nStones,9);
+		this.holes.add(A2);
+		A3 = new Pit(nStones,10);
+		this.holes.add(A3);
+		A4 = new Pit(nStones,11);
+		this.holes.add(A4);
+		A5 = new Pit(nStones,12);
+		this.holes.add(A5);
+		A6 = new Pit(nStones,13);
+		this.holes.add(A6);
+		
 		
 
 		this.pastHoles = new ArrayList<Hole>();
@@ -82,9 +83,8 @@ public class DataModel
 	}
 	
 
-	public int move(int position){
-		
-		int mancalaGoAgain = 0;
+	public void move(int position){
+		System.out.println(position);
 		GAMECONDITION current; 
 		Player winner = null;
 		
@@ -122,7 +122,7 @@ public class DataModel
 		 {
 		 		System.out.println("go again");
 
-		 		mancalaGoAgain = 1;
+		 		togglePlayer();
 		 		
 		 }
 		 else if (wasEmpty(addPosition))
@@ -177,8 +177,7 @@ public class DataModel
 			 RectangleBoard.dislayWinner(winner);
 		 }
 		 
-		 return mancalaGoAgain;
-				
+		
 
 
 	}

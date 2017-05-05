@@ -44,14 +44,19 @@ public class RectangleBoard extends BoardLayout
 		this.holes.get(0).setX(1030);
 		this.holes.get(0).draw(g2,1030,120);
 
+		//A's
 		int xo = 180;
-		for (int i = 8; i < this.holes.size();i++){ 
+		for (int i = this.holes.size()/2 + 1; i < this.holes.size();i++){ 
+			
 			xo = xo + 10;
-			this.holes.get(i).draw(g2,xo,450);
 			this.holes.get(i).setY(450);
 			this.holes.get(i).setX(xo);
+			this.holes.get(i).draw(g2,xo,450);
+			
+			
 			xo = xo + 120 + 10;
 		}
+		//B's
 		xo = xo - 120;
 		for (int i = 1; i < this.holes.size()/2;i++){
 			xo = xo - 10;
