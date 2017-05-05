@@ -82,7 +82,9 @@ public class DataModel
 	}
 	
 
-	public void move(int position){
+	public int move(int position){
+		
+		int mancalaGoAgain = 0;
 		GAMECONDITION current; 
 		Player winner = null;
 		
@@ -99,35 +101,44 @@ public class DataModel
 		 	}
 		 	
 		 	if (isMancala(addPosition)) //if current is mancala
-			 {   //if you're player a & on mancala 0 then skip
+		 
+			 {  System.out.println("is mancala");
+
+		 		//if you're player a & on mancala 0 then skip
 			 	 if(player == Player.PLAYERA && addPosition == 7)
 			 	 continue;
 			 	 //if you're player b & on mancala 7 then skip
 			 	 if(player == Player.PLAYERB && addPosition == 0)
 				 continue;
 
-			 } 
-		 	else if (isEmpty(addPosition))
-			 {
-		 		System.out.println("empty working");
-		 		if(isPlayerHole(player, holes.get(addPosition)))
-		 		{	
-			 		System.out.println("your hole working");
-
-			 	int oppStones = this.holes.get(14 - addPosition).getStones();
-			 	int currStones = this.holes.get(addPosition).getStones();
-			 	
-			 	this.holes.get(14 - addPosition).setStones(0);
-			 	holes.get(addPosition).setStones(currStones + oppStones);
-			 	//if(player == Player.PLAYERA)
-			 	//this.holes.get(7).setStones(this.holes.get(addPosition).getStones() + oppStones);
-			 	//this.holes.get(0).setStones(this.holes.get(addPosition).getStones() + oppStones);
-		 		}
-			 	
 			 }
 		 	
-		 	this.holes.get(addPosition).setStones(this.holes.get(addPosition).getStones()+1); //adding one
+			 this.holes.get(addPosition).setStones(this.holes.get(addPosition).getStones()+1); //adding one
+
 		 }
+		 
+		 
+		 if(isMancala(addPosition) && isPlayerHole(player, holes.get(addPosition)))
+		 {
+		 		System.out.println("go again");
+
+		 		mancalaGoAgain = 1;
+		 		
+		 }
+		 else if (wasEmpty(addPosition))
+		 {
+	 		if(isPlayerHole(player, holes.get(addPosition)))
+	 		{	
+
+		 	int oppStones = this.holes.get(14 - addPosition).getStones();
+		 	int currStones = this.holes.get(addPosition).getStones();
+		 	
+		 	this.holes.get(14 - addPosition).setStones(0);
+		 	holes.get(addPosition).setStones(currStones + oppStones);
+	 		}
+		 	
+		 }
+		 
 		 
 		 
 		 current = gameIsDone();
@@ -165,6 +176,8 @@ public class DataModel
 		 {
 			 RectangleBoard.dislayWinner(winner);
 		 }
+		 
+		 return mancalaGoAgain;
 				
 
 
@@ -261,6 +274,10 @@ public class DataModel
 			return null;
 			
 	}
+	public boolean wasEmpty(int position){
+		return (this.holes.get(position).getStones() == 1);
+	}
+	
 	public boolean isEmpty(int position){
 		return (this.holes.get(position).getStones() == 0);
 	}
@@ -322,14 +339,14 @@ public class DataModel
 	{
 		if(p == Player.PLAYERB)
 		{
-			if(h.getArrPos() < 7 && h.getArrPos() > 0)
+			if(h.getArrPos() <= 7 && h.getArrPos() > 0)
 				return true;
 
 		}
 		
 		else if(p == Player.PLAYERA)
 		{
-			if(h.getArrPos() > 7  && h.getArrPos() < 14)
+			if(h.getArrPos() > 7  && h.getArrPos() < 14 || h.getArrPos() == 0)
 			return true;
 		}
 		

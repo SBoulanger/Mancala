@@ -40,6 +40,7 @@ public class Board extends JFrame implements ChangeListener
 		MouseListener ml = new MouseListener(){
 			public void mouseClicked(MouseEvent e) 
 			{
+				int mancalaGoAgain = 0;
 				int x;
 				int y;
 				x = e.getX();
@@ -50,9 +51,10 @@ public class Board extends JFrame implements ChangeListener
 						h = holes.get(i);
 						if (!model.isMancala(h.getArrPos()) && h.contains(x, y) && !model.isEmpty(h.getArrPos())){
 							model.saveState();
-							model.move(h.getArrPos());
+							mancalaGoAgain = model.move(h.getArrPos());
 							model.getPlayer().setJustWent();;
 							model.getOtherPlayer().setFirstTurn();
+							if(mancalaGoAgain == 0)
 							model.togglePlayer();
 							turnLabel.setText("Undos left: "+(3-model.getPlayer().getUndos())+" "+model.getPlayer().toString());
 						}
@@ -62,9 +64,10 @@ public class Board extends JFrame implements ChangeListener
 						h = holes.get(i);
 						if (!model.isMancala(h.getArrPos()) && h.contains(x, y) && !model.isEmpty(h.getArrPos())){
 							model.saveState();
-							model.move(h.getArrPos());
+							mancalaGoAgain = model.move(h.getArrPos());
 							model.getPlayer().setJustWent();
 							model.getOtherPlayer().setFirstTurn();
+							if(mancalaGoAgain == 0)
 							model.togglePlayer();
 							turnLabel.setText("Undos left: "+(3-model.getPlayer().getUndos())+" "+model.getPlayer().toString());
 						}
