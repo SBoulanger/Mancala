@@ -36,16 +36,16 @@ public class RectangleBoard extends BoardLayout
 		g2.fill(board);
 		Color color2 = new Color(145, 107, 66);
 		g2.setColor(color2);
-		this.holes.get(0).setX(50);
-		this.holes.get(0).setY(120);
-		this.holes.get(0).draw(g2,50,120);
-
+		this.holes.get(7).setX(50);
 		this.holes.get(7).setY(120);
-		this.holes.get(7).setX(1030);
-		this.holes.get(7).draw(g2,1030,120);
+		this.holes.get(7).draw(g2,50,120);
+
+		this.holes.get(0).setY(120);
+		this.holes.get(0).setX(1030);
+		this.holes.get(0).draw(g2,1030,120);
 
 		int xo = 180;
-		for (int i = 1; i < this.holes.size()/2;i++){
+		for (int i = 8; i < this.holes.size();i++){ 
 			xo = xo + 10;
 			this.holes.get(i).draw(g2,xo,450);
 			this.holes.get(i).setY(450);
@@ -53,7 +53,7 @@ public class RectangleBoard extends BoardLayout
 			xo = xo + 120 + 10;
 		}
 		xo = xo - 120;
-		for (int i = 8; i < this.holes.size();i++){
+		for (int i = 1; i < this.holes.size()/2;i++){
 			xo = xo - 10;
 			this.holes.get(i).setX(xo);
 			this.holes.get(i).setY(50);
@@ -70,14 +70,14 @@ public class RectangleBoard extends BoardLayout
 
 		String [] sideA = {"A1", "A2", "A3", "A4", "A5", "A6", ""};
 		String [] sideB = {"B1", "B2", "B3", "B4", "B5", "B6", ""};
-		int stringX = 270;
-		for(int j = 0; j < 7; j++){
+		int stringX = 135;
+		for(int j = 6; j > -1; j--){ 
 			g2.drawString(sideB[j], stringX, 230);
 			stringX += 130;
 		}
 
-		stringX = 135;
-		for(int j = 6; j > -1; j--){
+		stringX = 270;
+		for(int j = 0; j < 7; j++){
 			g2.drawString(sideA[j], stringX, 390);
 			stringX += 130;
 		}

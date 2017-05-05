@@ -44,8 +44,8 @@ public class DataModel
 		this.nStones = nStones;
 		this.holes = new ArrayList<Hole>();
 		this.listeners = new ArrayList<ChangeListener>();
-		B  = new Mancala(0,0);
-		this.holes.add(B);
+		A = new Mancala(0,0);
+		this.holes.add(A);
 		B1 = new Pit(nStones,1);
 		this.holes.add(B1);
 		B2 = new Pit(nStones,2);
@@ -58,8 +58,8 @@ public class DataModel
 		this.holes.add(B5);
 		B6 = new Pit(nStones,6);
 		this.holes.add(B6);
-		A = new Mancala(0,7);
-		this.holes.add(A);
+		B  = new Mancala(0,7);
+		this.holes.add(B);
 		A6 = new Pit(nStones,8);
 		this.holes.add(A6);
 		A5 = new Pit(nStones,9);
@@ -72,6 +72,7 @@ public class DataModel
 		this.holes.add(A2);
 		A1 = new Pit(nStones,13);
 		this.holes.add(A1);
+		
 
 		this.pastHoles = new ArrayList<Hole>();
 		cloneState();
@@ -82,28 +83,52 @@ public class DataModel
 	
 
 	public void move(int position){
-		GAMECONDITION current;
+		GAMECONDITION current; 
 		Player winner = null;
-		 int addPosition = 0;
-		 int amount_stones = this.holes.get(position).getStones();
-		 this.holes.get(position).setStones(0);
-		 for (int i = 0; i < amount_stones;i++){
-		 	addPosition = position + i + 1;
-		 	if (addPosition >= 14){
-		 		addPosition = 0 + addPosition % 14;
+		
+		 int addPosition = 0; //start position
+		 int amount_stones = this.holes.get(position).getStones(); //amount of stones in whatever hole you're in
+		 this.holes.get(position).setStones(0); //set the amount of current hole to 0
+		 for (int i = 0; i < amount_stones;i++)//do it until you run out of stones
+		 {
+			 	addPosition = position + i + 1; //to next hole
+
+		 	if (addPosition > 13) //if past mancala a
+		 	{
+		 		addPosition %= 14; //sets back to 0
 		 	}
-		 	this.holes.get(addPosition).setStones(this.holes.get(addPosition).getStones()+1);
-		 }
-		 if (isMancala(addPosition)){
-		 	 move(addPosition);
-		 } else if (isEmpty(addPosition)){
-		 	int oppStones = this.holes.get(14 - addPosition).getStones();
-		 	this.holes.get(14 - addPosition).setStones(0);
-		 	if(player == Player.PLAYERA)
-		 	this.holes.get(7).setStones(this.holes.get(addPosition).getStones() + oppStones);
-		 	this.holes.get(0).setStones(this.holes.get(addPosition).getStones() + oppStones);
 		 	
+		 	if (isMancala(addPosition)) //if current is mancala
+			 {   //if you're player a & on mancala 0 then skip
+			 	 if(player == Player.PLAYERA && addPosition == 7)
+			 	 continue;
+			 	 //if you're player b & on mancala 7 then skip
+			 	 if(player == Player.PLAYERB && addPosition == 0)
+				 continue;
+
+			 } 
+		 	else if (isEmpty(addPosition))
+			 {
+		 		System.out.println("empty working");
+		 		if(isPlayerHole(player, holes.get(addPosition)))
+		 		{	
+			 		System.out.println("your hole working");
+
+			 	int oppStones = this.holes.get(14 - addPosition).getStones();
+			 	int currStones = this.holes.get(addPosition).getStones();
+			 	
+			 	this.holes.get(14 - addPosition).setStones(0);
+			 	holes.get(addPosition).setStones(currStones + oppStones);
+			 	//if(player == Player.PLAYERA)
+			 	//this.holes.get(7).setStones(this.holes.get(addPosition).getStones() + oppStones);
+			 	//this.holes.get(0).setStones(this.holes.get(addPosition).getStones() + oppStones);
+		 		}
+			 	
+			 }
+		 	
+		 	this.holes.get(addPosition).setStones(this.holes.get(addPosition).getStones()+1); //adding one
 		 }
+		 
 		 
 		 current = gameIsDone();
 		 
@@ -291,5 +316,23 @@ public class DataModel
 	}
 	public ArrayList<Hole> getPastData(){
 		return this.pastHoles;
+	}
+	
+	public boolean isPlayerHole(Player p, Hole h)
+	{
+		if(p == Player.PLAYERB)
+		{
+			if(h.getArrPos() < 7 && h.getArrPos() > 0)
+				return true;
+
+		}
+		
+		else if(p == Player.PLAYERA)
+		{
+			if(h.getArrPos() > 7  && h.getArrPos() < 14)
+			return true;
+		}
+		
+		return false;
 	}
 }

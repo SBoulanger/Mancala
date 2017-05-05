@@ -46,7 +46,7 @@ public class Board extends JFrame implements ChangeListener
 				y = e.getY();
 				Hole h;
 				if (model.getPlayer() == Player.PLAYERA){
-					for (int i = 7; i < holes.size(); i++){
+					for (int i = 8; i < holes.size(); i++){
 						h = holes.get(i);
 						if (!model.isMancala(h.getArrPos()) && h.contains(x, y) && !model.isEmpty(h.getArrPos())){
 							model.saveState();
@@ -58,7 +58,7 @@ public class Board extends JFrame implements ChangeListener
 						}
 					}
 				} else {
-					for (int i = 0; i < holes.size()/2; i++){
+					for (int i = 1; i < holes.size()/2; i++){
 						h = holes.get(i);
 						if (!model.isMancala(h.getArrPos()) && h.contains(x, y) && !model.isEmpty(h.getArrPos())){
 							model.saveState();
