@@ -13,21 +13,10 @@ public class DataModel
 	ArrayList<ChangeListener> listeners;
 	private int nStones;
 	
-	private Pit A1;
-	private Pit A2;
-	private Pit A3;
-	private Pit A4;
-	private Pit A5;
-	private Pit A6;
-	private Mancala B;
-	private Pit B1;
-	private Pit B2;
-	private Pit B3;
-	private Pit B4;
-	private Pit B5;
-	private Pit B6;
+	private Pit A1, A2, A3, A4, A5, A6;
 	private Mancala A;
-
+	private Pit B1, B2, B3, B4, B5, B6;
+	private Mancala B;
 
 	private Player player;
 

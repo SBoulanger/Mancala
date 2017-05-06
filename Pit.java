@@ -4,22 +4,31 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 
-
+/**
+* Pit class representing the Pits
+*/
 class Pit extends Hole 
 {
-	private int pebbleX;
-	private int pebbleY;
 	private int height = 120;
 	private int width  = 120;
 	
+	/**
+	* calls the Hole (super) contructor
+	*/
 	public Pit(int pebbles, int id) 
 	{
 		super(pebbles, id);
 	}
+	/**
+	* draws the hole onto the screen
+	* @param 2-dimensional graphics object to draw on
+	* @param x coordinate
+	* @param y coordinate
+	*/
 	public void draw(Graphics2D g2, int x, int y){
 		setX(x);
 		setY(y);
-		Ellipse2D hole = new Ellipse2D.Double(x, y, 120, 120);
+		Ellipse2D hole = new Ellipse2D.Double(x, y, height, width);
 		Color color = new Color(155, 100, 49);
 		g2.setColor(color);
         g2.draw(hole);
@@ -28,7 +37,13 @@ class Pit extends Hole
 
         this.drawStones(g2, x, y);
 	}
-
+	
+	/**
+	* draws the all the stones in the hole
+	* @param 2-dimensional graphics object to draw on
+	* @param x coordinate
+	* @param y coordinate
+	*/
 	public void drawStones(Graphics2D g2, int x, int y)
 	{
 		if(this.getStones() < 5)
@@ -48,16 +63,19 @@ class Pit extends Hole
 			g2.drawString(this.getStones() + "", x + 45, y + 75);
 		}
 	}
-	
+
+	/**
+	* translates the pebble to be drawn
+	* @param x position
+	* @param y position
+	* @param z pebble count
+	*/
 	public void translatePebble(int x, int y, int z)
 	{
-		
-		
-		pebbleX = (int) (Math.cos(z * 3.14f / 2 - 3.14f / 2) * 30 + (x + 40)); 
-		pebbleY = (int) (Math.sin(z * 3.14f / 2 - 3.14f / 2) * 30 + (y + 40));	
-		
-		
+		this.pebbleX = (int) (Math.cos(z * 3.14f / 2 - 3.14f / 2) * 30 + (x + 40)); 
+		this.pebbleY = (int) (Math.sin(z * 3.14f / 2 - 3.14f / 2) * 30 + (y + 40));	
 	}
+
 	/**
 	* return the pit width
 	* @return the pit width integer
