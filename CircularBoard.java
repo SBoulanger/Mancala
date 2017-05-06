@@ -10,61 +10,77 @@ import java.awt.geom.GeneralPath;
 import java.awt.Color;
 import java.awt.Font;
 
+/**
+* Circle Layout for Mancala Board
+*/
 public class CircularBoard implements BoardLayout
 {
-	private DataModel model;
 	private ArrayList<Hole> holes;
-	private int pebbles;
-	private int holeX = 150;
-	private int holeY = 50;
+
+	private final int DISTANCEX = 130;
+	private final int ROWBY  = 120;
+
+	private final int[] LINEAROFFYSET = {40, 80, 100, 100, 80, 40};
 
 	private final double HEIGHT = 580.0;
 	private final double WIDTH  = 1180.0;
 	
+	/**
+	* Constructor that initializes the layout and stores the holes array
+	* @param the list of mancala holes
+	*/
 	public CircularBoard(ArrayList<Hole> holes)
 	{
-
-		this.holes = holes;
-		
+		this.holes = holes;		
 	}
 	
+	/**
+	* Calls the drawBoard algorithm
+	* @param the paint component
+	* @param the graphics object to draw on
+	* @param the x coordinate
+	* @param the y coordinate
+	*/
 	public void paintIcon(Component c, Graphics g, int x, int y)
 	{
 		drawBoard((Graphics2D) g);
 	}
 
+	/**
+	* the drawing algorithm that draws the circles board
+	* @param 2-dimensional graphics object used to draw shapes on
+	*/
 	public void drawBoard(Graphics2D g2){
+		//set the color of the board
 		Color color1 = new Color(163, 123, 80);
 		g2.setColor(color1);
+
+		//draw the board
 		Ellipse2D board = new Ellipse2D.Double(10.0,10.0, WIDTH, HEIGHT);
 		g2.draw(board);
 		g2.fill(board);
-		this.holes.get(0).setX(980);
-		this.holes.get(0).setY(120);
-		this.holes.get(0).draw(g2, 980, 120);
-		this.holes.get(7).setX(100);
-		this.holes.get(7).setY(120);
-		this.holes.get(7).draw(g2, 100, 120);
+
+		//set the mancala positions
+		this.holes.get(DataModel.mancalaAPosition).draw(g2, 980, 120);
+		this.holes.get(DataModel.mancalaBPosition).draw(g2, 100, 120);
 
 		int holex = 220;
-		int [] holey2 = {0, 80, 40, 20, 20, 40, 80};
-		int [] holey1 = {0, 400, 440, 460, 460, 440, 400};
+		int roway = ROWBY + this.holes.get(DataModel.mancalaBPosition).getHeight();
 
+		//set Bs
 		for (int i = 1; i < holes.size()/2;i++){
-			this.holes.get(i + 7).setX(holex);
-			this.holes.get(i + 7).setY(holey1[i]);
-			this.holes.get(i + 7).draw(g2, holex, holey1[i]);
-			holex += 130;
+			this.holes.get(i + 7).draw(g2, holex, roway - this.holes.get(i+7).getHeight() + LINEAROFFYSET[i-1]);
+			holex += DISTANCEX;
 		}
 
+		//set As
 		holex = 865;
 		for (int i = 1; i < holes.size()/2 ;i++){
-			this.holes.get(i).setX(holex);
-			this.holes.get(i).setY(holey2[i]);
-			this.holes.get(i).draw(g2, holex, holey2[i]);
-			holex -= 130;
+			this.holes.get(i).draw(g2, holex, ROWBY - LINEAROFFYSET[i-1]);
+			holex -= DISTANCEX;
 		}
 
+		//set hole labels
 		Font Labels = new Font("Arial", Font.PLAIN, 20);
 		g2.setFont(Labels);
 		g2.setColor(Color.RED);
@@ -87,13 +103,15 @@ public class CircularBoard implements BoardLayout
 		}
 	}
 
-	public 	int getIconWidth() 
-	{
-		return (int)this.WIDTH;
-	}
+	/**
+	* returns the height of board
+	* @return the height of an integer
+	*/
+	public int getIconHeight() { return (int)this.HEIGHT; }
 
-	public int getIconHeight() 
-	{
-		return (int)this.HEIGHT;
-	}
+	/**
+	* returns the width of board
+	* @return the width as an integer
+	*/
+	public 	int getIconWidth() { return (int)this.WIDTH; }
 }
