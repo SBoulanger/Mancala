@@ -6,7 +6,13 @@ import java.util.Random;
 
 public class Stone 
 {
-	//pebble draws itself
+	/**
+	 * algorithm so stone draws itself
+	 * @param g2 the graphics2D to draw
+	 * @param x the x cord. of its Hole
+	 * @param y the y cord. of its Hole
+	 * @param colorInput
+	 */
 	public void draw(Graphics2D g2, int x, int y, int colorInput)
 	{
 		Ellipse2D stone = new Ellipse2D.Double(x, y, 30, 30);
