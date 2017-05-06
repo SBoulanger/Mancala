@@ -10,19 +10,19 @@ import java.awt.geom.GeneralPath;
 import java.awt.Color;
 import java.awt.Font;
 
-public class CircularBoard extends BoardLayout
+public class CircularBoard implements BoardLayout
 {
 	private DataModel model;
 	private ArrayList<Hole> holes;
 	private int pebbles;
 	private int holeX = 150;
 	private int holeY = 50;
-	private final int height = 600;
-	private final int width  = 1200;
+
+	private final double HEIGHT = 580.0;
+	private final double WIDTH  = 1180.0;
 	
 	public CircularBoard(ArrayList<Hole> holes)
 	{
-		super();
 
 		this.holes = holes;
 		
@@ -30,10 +30,13 @@ public class CircularBoard extends BoardLayout
 	
 	public void paintIcon(Component c, Graphics g, int x, int y)
 	{
+		drawBoard((Graphics2D) g);
+	}
+
+	public void drawBoard(Graphics2D g2){
 		Color color1 = new Color(163, 123, 80);
-		Graphics2D g2 = (Graphics2D) g;
 		g2.setColor(color1);
-		Ellipse2D board = new Ellipse2D.Double(10.0,10.0, 1180.0, 580.0);
+		Ellipse2D board = new Ellipse2D.Double(10.0,10.0, WIDTH, HEIGHT);
 		g2.draw(board);
 		g2.fill(board);
 		this.holes.get(0).setX(980);
@@ -86,11 +89,11 @@ public class CircularBoard extends BoardLayout
 
 	public 	int getIconWidth() 
 	{
-		return (int)this.width;
+		return (int)this.WIDTH;
 	}
 
 	public int getIconHeight() 
 	{
-		return (int)this.height;
+		return (int)this.HEIGHT;
 	}
 }

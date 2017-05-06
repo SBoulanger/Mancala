@@ -9,6 +9,8 @@ import java.util.Random;
 	
 	private int pebbleX;
 	private int pebbleY;
+	private final int width = 120;
+	private final int height = 360;
 
 	public Mancala(int pebbles, int id) 
 	{
@@ -17,7 +19,9 @@ import java.util.Random;
 		
 	}
 	public void draw(Graphics2D g2, int x, int y){
-		Ellipse2D hole = new Ellipse2D.Double(x, y, 120, 360);
+		setX(x);
+		setY(y);
+		Ellipse2D hole = new Ellipse2D.Double(x, y, width, height);
 		Color color2 = new Color(145, 107, 66);
 		g2.setColor(color2);
         g2.draw(hole);
@@ -52,4 +56,19 @@ import java.util.Random;
 			pebbleX = (int) (Math.cos(z * 3.14f / 2 - 3.14f / 2) * 30 + (x + 50)); 
 			pebbleY = (int) (Math.sin(z * 3.14f / 2 - 3.14f / 2) * 30 + (y + 180));	
 		}
+	/**
+	* returns the width of mancala hole
+	* @return the width integer
+	*/
+	public int getWidth(){
+		return this.width;
+	}
+
+	/**
+	* returns the height of mancala hole
+	* @return the height integer
+	*/
+	public int getHeight(){
+		return this.height;
+	}
  }

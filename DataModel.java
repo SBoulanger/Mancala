@@ -31,7 +31,8 @@ public class DataModel
 
 	private Player player;
 
-	
+	public static int mancalaAPosition = 0;
+	public static int mancalaBPosition = 7;
 	
 	enum GAMECONDITION
 	{
@@ -164,7 +165,7 @@ public class DataModel
 			}
 			
 			winner = whoWon();
-			BoardLayout.dislayWinner(winner);
+			Board.dislayWinner(winner);
 
 			
 				

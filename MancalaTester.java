@@ -4,23 +4,29 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.geom.*;
 
+/**
+* @author Samuel Boulanger
+* @author Cindy Ho
+* @author Aldo Barrientos
+* Runnable class that sets up the Mancala game and prompts for settings
+*/
 public class MancalaTester {
 
-        enum BoardChoice {
-                RECTANGLE, CIRCLE
-        }
+        enum BoardChoice { RECTANGLE, CIRCLE }
         private static BoardChoice choice;
         private static int pebbleCount;
-	public MancalaTester(){
-		
-	}
 	
+        /**
+        * main function that starts the program
+        */
 	public static void main (String args[]){
 
                 doInitProcess1();
 		
 	}
-
+        /**
+        * creates frame to prompt the user to select the board layout
+        */
         public static void doInitProcess1(){
                 JFrame initframe = new JFrame();
                 initframe.setLayout(new FlowLayout());
@@ -51,6 +57,9 @@ public class MancalaTester {
                 initframe.setVisible(true);
 
         }
+        /**
+        * creates frame to prompt user to select the amount of pebbles
+        */
         public static void doInitProcess2(){
                 JFrame initframe = new JFrame();
                 initframe.setLayout(new FlowLayout());
@@ -60,7 +69,7 @@ public class MancalaTester {
                 rectButton.addActionListener(new ActionListener(){
                         public void actionPerformed(ActionEvent e){
                                 initframe.dispose();
-                                pebbleCount = 1;
+                                pebbleCount = 3;
                                 doInitProcess3();
                         }
                 });
@@ -81,6 +90,9 @@ public class MancalaTester {
                 initframe.setVisible(true);
 
         }
+        /**
+        * starts the Mancala game based on selected attributes
+        */
         public static void doInitProcess3(){
 
                 DataModel dm = new DataModel(pebbleCount);

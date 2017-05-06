@@ -9,13 +9,16 @@ class Pit extends Hole
 {
 	private int pebbleX;
 	private int pebbleY;
-	
+	private int height = 120;
+	private int width  = 120;
 	
 	public Pit(int pebbles, int id) 
 	{
 		super(pebbles, id);
 	}
 	public void draw(Graphics2D g2, int x, int y){
+		setX(x);
+		setY(y);
 		Ellipse2D hole = new Ellipse2D.Double(x, y, 120, 120);
 		Color color = new Color(155, 100, 49);
 		g2.setColor(color);
@@ -54,6 +57,21 @@ class Pit extends Hole
 		pebbleY = (int) (Math.sin(z * 3.14f / 2 - 3.14f / 2) * 30 + (y + 40));	
 		
 		
+	}
+	/**
+	* return the pit width
+	* @return the pit width integer
+	*/
+	public int getWidth(){
+		return this.width;
+	}
+
+	/**
+	* return the pit height
+	* @return the pit height integer
+	*/
+	public int getHeight(){
+		return this.height;
 	}
 
 }

@@ -79,6 +79,8 @@ abstract class Hole implements Cloneable
 		return false;
 	}
 	
+	abstract public int getWidth();
+	abstract public int getHeight();
 	abstract public void draw(Graphics2D g2, int x, int y);
 	abstract public void drawStones(Graphics2D g2, int x, int y);
 
