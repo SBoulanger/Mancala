@@ -111,4 +111,5 @@ public class Board extends JFrame implements ChangeListener
 	public void stateChanged(ChangeEvent e){
 		repaint();
 	}
+
 }

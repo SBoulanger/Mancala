@@ -91,31 +91,6 @@ public class RectangleBoard extends BoardLayout
 
 
 	}
-	
-	public static void dislayWinner(Player p)
-	{
-		JFrame wf = new JFrame();
-		 
-		String winner = "PLAYER A!";
-		if(p == Player.PLAYERB)
-			winner = "PLAYER B!";
-		
-		Font Labels = new Font("Arial", Font.PLAIN, 100);
-		g2.setFont(Labels);
-		g2.setColor(Color.BLACK);
-
-		System.out.println("THE WINNER IS " + winner);
-		
-		
-		JLabel label = new JLabel("THE WINNER IS " + winner);
-		wf.add(label);
-		
-		wf.pack();
-        wf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        wf.setVisible(true);		
-	}
-	
-	
 
 	public 	int getIconWidth() 
 	{

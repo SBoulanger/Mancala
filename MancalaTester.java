@@ -60,7 +60,7 @@ public class MancalaTester {
                 rectButton.addActionListener(new ActionListener(){
                         public void actionPerformed(ActionEvent e){
                                 initframe.dispose();
-                                pebbleCount = 3;
+                                pebbleCount = 1;
                                 doInitProcess3();
                         }
                 });
@@ -82,15 +82,10 @@ public class MancalaTester {
 
         }
         public static void doInitProcess3(){
-                //System.out.println("Hi, Welcome to Mancala!");
-                //Scanner scanner = new Scanner(System.in);
-                //System.out.println("How many stones would you like to start with? 3 or 4?");
-                //int amtStart = scanner.nextInt();
 
                 DataModel dm = new DataModel(pebbleCount);
                 Board b = new Board(dm);
-                //System.out.println("Which layout would you like? (1) Rectangular (2) Circular");
-                //int choice = scanner.nextInt();
+
                 if(choice == BoardChoice.RECTANGLE){
                         b.attachBoardLayout(new RectangleBoard(dm.getData()));
                 }

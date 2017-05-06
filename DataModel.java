@@ -104,13 +104,12 @@ public class DataModel
 		 
 			 {  System.out.println("is mancala");
 
-		 		//if you're player a & on mancala 0 then skip
-			 	 if(player == Player.PLAYERA && addPosition == 7)
-			 	 continue;
-			 	 //if you're player b & on mancala 7 then skip
-			 	 if(player == Player.PLAYERB && addPosition == 0)
-				 continue;
+		 		//if you're player a & on mancala 0 then skip or if you're player b & on mancala 7 then skip
+			 	 if((player == Player.PLAYERA && addPosition == 7) || (player == Player.PLAYERB && addPosition == 0)) {
+			 	 	amount_stones++;
+			 	 	continue;
 
+			 	 }
 			 }
 		 	
 			 this.holes.get(addPosition).setStones(this.holes.get(addPosition).getStones()+1); //adding one
@@ -120,7 +119,6 @@ public class DataModel
 		 
 		 if(isMancala(addPosition) && isPlayerHole(player, holes.get(addPosition)))
 		 {
-		 		System.out.println("go again");
 
 		 		togglePlayer();
 		 		
@@ -166,19 +164,13 @@ public class DataModel
 			}
 			
 			winner = whoWon();
-			
+			BoardLayout.dislayWinner(winner);
+
 			
 				
 		 }
 		 updateBoard();
-
-		 if(current != GAMECONDITION.CONTINUE)
-		 {
-			 RectangleBoard.dislayWinner(winner);
-		 }
 		 
-		
-
 
 	}
 	public void saveState(){
@@ -246,7 +238,7 @@ public class DataModel
 		{
 			count += holes.get(i).getStones();
 		}
-				return count;
+		return count;
 	}
 	public boolean isMancala(int position){
 		if (this.holes.get(position) instanceof Mancala) {
