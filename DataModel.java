@@ -12,6 +12,7 @@ public class DataModel
 	ArrayList<Hole> pastHoles;
 	ArrayList<ChangeListener> listeners;
 	private int nStones;
+	private boolean justRepeated;
 	
 	private Pit A1, A2, A3, A4, A5, A6;
 	private Mancala A;
@@ -74,6 +75,7 @@ public class DataModel
 	
 
 	public void move(int position){
+		justRepeated = false;
 		System.out.println(position);
 		GAMECONDITION current; 
 		Player winner = null;
@@ -109,7 +111,7 @@ public class DataModel
 		 
 		 if(isMancala(addPosition) && isPlayerHole(player, holes.get(addPosition)))
 		 {
-
+			 	justRepeated = true;
 		 		togglePlayer();
 		 		
 		 }
@@ -293,6 +295,7 @@ public class DataModel
 
 	public void togglePlayer()
 	{
+		System.out.println("toggle");
 		if(player == Player.PLAYERA)
 		{
 		
@@ -332,5 +335,10 @@ public class DataModel
 		}
 		
 		return false;
+	}
+	
+	public boolean getJustRepeated()
+	{
+		return justRepeated;
 	}
 }

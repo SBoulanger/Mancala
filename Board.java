@@ -96,6 +96,7 @@ public class Board extends JFrame implements ChangeListener
 
 				if (model.getPlayer().canUndo()){
 					model.restorePastData();
+					if(model.getJustRepeated() == false)
 					model.togglePlayer();
 					model.getPlayer().undid();
 					turnLabel.setText("Undos left: "+(3-model.getPlayer().getUndos())+" "+model.getPlayer().toString());
