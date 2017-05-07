@@ -63,8 +63,6 @@ public class DataModel
 		this.holes.add(A5);
 		A6 = new Pit(nStones,13);
 		this.holes.add(A6);
-		
-		
 
 		this.pastHoles = new ArrayList<Hole>();
 		cloneState();
