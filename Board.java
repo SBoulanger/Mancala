@@ -17,6 +17,11 @@ import javax.swing.JLabel;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * 
+ * acts a controller which manipulates views and sends input to model
+ *
+ */
 public class Board extends JFrame implements ChangeListener 
 {
 	public DataModel model;
@@ -37,6 +42,9 @@ public class Board extends JFrame implements ChangeListener
 
 		setLayout(new BorderLayout());
 
+		/**
+		 * detects input and sends input to model
+		 */
 		MouseListener ml = new MouseListener(){
 			public void mouseClicked(MouseEvent e) 
 			{
@@ -82,6 +90,11 @@ public class Board extends JFrame implements ChangeListener
 		addMouseListener(ml);
 		
 	}
+	
+	/**
+	 * uses a BoardLayout to set the view 
+	 * @param bl the BoardLayout used to set view
+	 */
 	public void attachBoardLayout(BoardLayout bl){
 		this.layout = bl;
 		JLabel jl = new JLabel(bl);
@@ -108,10 +121,19 @@ public class Board extends JFrame implements ChangeListener
 		panel.add(undoButton);
 		add(panel,BorderLayout.SOUTH);
 	}
+	
+	/**
+	 * when a change has been detected in data model,
+	 * method is called ot repaint new data
+	 */
 	public void stateChanged(ChangeEvent e){
 		repaint();
 	}
 
+	/**
+	 * displays the winner once game ends 
+	 * @param p the player who will be displayed as winner
+	 */
 	public static void dislayWinner(Player p)
 	{
 		JFrame wf = new JFrame();

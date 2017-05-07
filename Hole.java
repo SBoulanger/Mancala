@@ -1,6 +1,8 @@
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 import javax.swing.Icon;
+
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.lang.Cloneable;
@@ -103,6 +105,16 @@ abstract class Hole implements Cloneable
 		return false;
 	}
 	
+	public int getPebbleX()
+	{
+		return pebbleX;
+	}
+	
+	public int getPebbleY()
+	{
+		return pebbleY;
+	}
+	
 	/**
 	* gets the width of hole
 	* @param width
@@ -126,7 +138,18 @@ abstract class Hole implements Cloneable
 	* @param x coordinate
 	* @param y coordinate
 	*/
-	abstract public void draw(Graphics2D g2, int x, int y);
+	public void draw(Graphics2D g2, int x, int y){
+		setX(x);
+		setY(y);
+		Ellipse2D hole = new Ellipse2D.Double(x, y, this.getWidth(), this.getHeight());
+		Color color = new Color(155, 100, 49);
+		g2.setColor(color);
+        g2.draw(hole);
+        g2.fill(hole);
+		g2.setColor(Color.BLACK);
+
+        this.drawStones(g2, x, y);
+	}
 	/**
 	* draws the all the stones in the hole
 	* @param 2-dimensional graphics object to draw on

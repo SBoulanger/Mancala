@@ -23,22 +23,7 @@ import java.util.Random;
 		super(pebbles, id);
 	}
 
-	/**
-	* draws the hole onto the screen
-	* @param 2-dimensional graphics object to draw on
-	* @param x coordinate
-	* @param y coordinate
-	*/
-	public void draw(Graphics2D g2, int x, int y){
-		setX(x);
-		setY(y);
-		Ellipse2D hole = new Ellipse2D.Double(x, y, width, height);
-		Color color2 = new Color(145, 107, 66);
-		g2.setColor(color2);
-        g2.draw(hole);
-        g2.fill(hole);
-        this.drawStones(g2, x, y);
-	}
+	
 
 	/**
 	* draws the all the stones in the hole

@@ -19,24 +19,7 @@ class Pit extends Hole
 	{
 		super(pebbles, id);
 	}
-	/**
-	* draws the hole onto the screen
-	* @param 2-dimensional graphics object to draw on
-	* @param x coordinate
-	* @param y coordinate
-	*/
-	public void draw(Graphics2D g2, int x, int y){
-		setX(x);
-		setY(y);
-		Ellipse2D hole = new Ellipse2D.Double(x, y, height, width);
-		Color color = new Color(155, 100, 49);
-		g2.setColor(color);
-        g2.draw(hole);
-        g2.fill(hole);
-		g2.setColor(Color.BLACK);
-
-        this.drawStones(g2, x, y);
-	}
+	
 	
 	/**
 	* draws the all the stones in the hole
