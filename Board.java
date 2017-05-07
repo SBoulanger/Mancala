@@ -27,14 +27,17 @@ public class Board extends JFrame implements ChangeListener
 	public DataModel model;
 	public BoardLayout layout;
 	public ArrayList<Hole> holes;
-	private RectangleBoard rectBoard;
 
 	private JLabel turnLabel;
 	private JButton undoButton;
 
-	private int height = 620;
-	private int width = 1220;
+	private final int HEIGHT = 620;
+	private final int WIDTH = 1220;
 
+	/**
+	* constructor that creates board
+	* @param datamodel that handles data
+	*/
 	public Board(DataModel dm){
 		this.model = dm;
 		int n = model.getAmtStart();
@@ -98,7 +101,7 @@ public class Board extends JFrame implements ChangeListener
 	public void attachBoardLayout(BoardLayout bl){
 		this.layout = bl;
 		JLabel jl = new JLabel(bl);
-		jl.setPreferredSize(new Dimension(width, height));
+		jl.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		add(jl,BorderLayout.CENTER);
 		JPanel panel = new JPanel();
 		turnLabel = new JLabel("Undos left: "+(3-model.getPlayer().getUndos())+" "+model.getPlayer().toString());
@@ -125,6 +128,7 @@ public class Board extends JFrame implements ChangeListener
 	/**
 	 * when a change has been detected in data model,
 	 * method is called ot repaint new data
+	 *@param event
 	 */
 	public void stateChanged(ChangeEvent e){
 		repaint();
