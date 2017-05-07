@@ -1,16 +1,13 @@
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.geom.Ellipse2D;
+import java.awt.*;
+import javax.swing.Icon;
 import java.util.ArrayList;
 import java.awt.geom.Rectangle2D;
-import javax.swing.Icon;
-import java.awt.geom.GeneralPath;
-import java.awt.Color;
-import java.awt.Font;
+import java.awt.geom.Ellipse2D;
 
 /**
+* @author Samuel Boulanger
+* @author Cindy Ho
+* @author Aldo Barrientos
 * Circle Layout for Mancala Board
 */
 public class CircularBoard implements BoardLayout
@@ -27,7 +24,7 @@ public class CircularBoard implements BoardLayout
 	
 	/**
 	* Constructor that initializes the layout and stores the holes array
-	* @param the list of mancala holes
+	* @param holes the list of mancala holes
 	*/
 	public CircularBoard(ArrayList<Hole> holes)
 	{
@@ -36,10 +33,10 @@ public class CircularBoard implements BoardLayout
 	
 	/**
 	* Calls the drawBoard algorithm
-	* @param the paint component
-	* @param the graphics object to draw on
-	* @param the x coordinate
-	* @param the y coordinate
+	* @param c the paint component
+	* @param g the graphics object to draw on
+	* @param x the x coordinate
+	* @param y the y coordinate
 	*/
 	public void paintIcon(Component c, Graphics g, int x, int y)
 	{
@@ -48,7 +45,7 @@ public class CircularBoard implements BoardLayout
 
 	/**
 	* the drawing algorithm that draws the circles board
-	* @param 2-dimensional graphics object used to draw shapes on
+	* @param g2 2-dimensional graphics object used to draw shapes on
 	*/
 	public void drawBoard(Graphics2D g2){
 		//set the color of the board

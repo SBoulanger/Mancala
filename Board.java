@@ -1,24 +1,15 @@
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 import java.awt.event.*;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 import java.util.ArrayList;
-
-import javax.swing.Icon;
-import javax.swing.JPanel;
-import javax.swing.JFrame;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
- * 
+ * @author Samuel Boulanger
+ * @author Cindy Ho
+ * @author Aldo Barrientos
  * acts a controller which manipulates views and sends input to model
  *
  */
@@ -36,7 +27,7 @@ public class Board extends JFrame implements ChangeListener
 
 	/**
 	* constructor that creates board
-	* @param datamodel that handles data
+	* @param dm datamodel that handles data
 	*/
 	public Board(DataModel dm){
 		this.model = dm;
@@ -126,9 +117,8 @@ public class Board extends JFrame implements ChangeListener
 	}
 	
 	/**
-	 * when a change has been detected in data model,
-	 * method is called ot repaint new data
-	 *@param event
+	 * when a change has been detected in data model, method is called ot repaint new data
+	 * @param e event for change event
 	 */
 	public void stateChanged(ChangeEvent e){
 		repaint();

@@ -8,6 +8,9 @@ import javax.swing.event.ChangeListener;
 
 /**
  * 
+ * @author Samuel Boulanger
+ * @author Cindy Ho
+ * @author Aldo Barrientos
  * holds/manipulates pits inside holes
  *
  */
@@ -319,8 +322,8 @@ public class DataModel
 	
 	/**
 	 * 
-	 * @param position
-	 * @return
+	 * @param position the hole postion
+	 * @return if the hole is empty
 	 */
 	public boolean isEmpty(int position){
 		return (this.holes.get(position).getStones() == 0);
@@ -328,7 +331,7 @@ public class DataModel
 
 	/**
 	 * adds a change listener to listeners 
-	 * @param c
+	 * @param c the change listener to attach
 	 */
 	public void attachListener(ChangeListener c){
 		listeners.add(c);

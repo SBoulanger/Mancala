@@ -3,7 +3,12 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 import java.util.Random;
-
+/**
+* @author Samuel Boulanger
+* @author Cindy Ho
+* @author Aldo Barrientos
+* the stones that get drawn inside the Holes
+*/
 public class Stone 
 {
 	/**
@@ -11,7 +16,7 @@ public class Stone
 	 * @param g2 the graphics2D to draw
 	 * @param x the x cord. of its Hole
 	 * @param y the y cord. of its Hole
-	 * @param colorInput
+	 * @param colorInput the color of the stone
 	 */
 	public void draw(Graphics2D g2, int x, int y, int colorInput)
 	{

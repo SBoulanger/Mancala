@@ -1,8 +1,4 @@
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
@@ -10,6 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 /**
+* @author Samuel Boulanger
+* @author Cindy Ho
+* @author Aldo Barrientos
 * Rectangle Layout for Mancala Board
 */
 public class RectangleBoard implements BoardLayout
@@ -27,7 +26,7 @@ public class RectangleBoard implements BoardLayout
 
 	/**
 	* Constructor that initializes the Layout and stores the holes array
-	* @param the list of mancala holes
+	* @param holes the list of mancala holes
 	*/
 	public RectangleBoard(ArrayList<Hole> holes)
 	{
@@ -36,10 +35,10 @@ public class RectangleBoard implements BoardLayout
 	
 	/**
 	* Calls the drawBoard algorithm
-	* @param the paint component
-	* @param the graphics object to draw on
-	* @param the x coordinate
-	* @param the y coordinate
+	* @param c the paint component
+	* @param g the graphics object to draw on
+	* @param x the x coordinate
+	* @param y the y coordinate
 	*/
 	public void paintIcon(Component c, Graphics g, int x, int y)
 	{
@@ -47,7 +46,7 @@ public class RectangleBoard implements BoardLayout
 	}
 	/**
 	* drawing algorithm that draws the rectangle board
-	* @param 2-dimensional graphics object used to draw shapes on
+	* @param g2 2-dimensional graphics object used to draw shapes on
 	*/
 	public void drawBoard(Graphics2D g2){
 

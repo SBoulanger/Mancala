@@ -18,6 +18,7 @@ public class MancalaTest {
 	
         /**
         * main function that starts the program
+        * @param args unused command line input
         */
 	public static void main (String args[]){
 

@@ -1,5 +1,7 @@
 /**
- * 
+ * @author Samuel Boulanger
+ * @author Cindy Ho
+ * @author Aldo Barrientos
  * enum helps determine current player and tracks undos
  *
  */
@@ -23,6 +25,10 @@ public enum Player
 	private Player(int n){
 		undos = n;
 	}
+	/**
+	* prints the player
+	* @return string representation of enum
+	*/
 	public String toString(){ if (this == PLAYERA) {return "Player A";} else {return "Player B";}}
 	
 	/**

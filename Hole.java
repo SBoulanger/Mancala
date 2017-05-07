@@ -9,6 +9,9 @@ import java.lang.Cloneable;
 import java.lang.CloneNotSupportedException;
 
 /**
+* @author Samuel Boulanger
+* @author Cindy Ho
+* @author Aldo Barrientos
 * Abstract class that defines the general holes in a Mancala game
 */
 abstract class Hole implements Cloneable
@@ -25,8 +28,8 @@ abstract class Hole implements Cloneable
 
 	/**
 	* Contructor that initalizes the pebble count and array position
-	* @param the amount of pebbles
-	* @param the index in the dataModel array
+	* @param pebbles the amount of pebbles
+	* @param arrPos the index in the dataModel array
 	*/
 	public Hole(int pebbles, int arrPos)
 	{
@@ -45,7 +48,7 @@ abstract class Hole implements Cloneable
 	
 	/**
 	* sets the x position of the Hole
-	* @param the x position
+	* @param x the x position
 	*/
 	public void setX(int x)
 	{
@@ -53,7 +56,7 @@ abstract class Hole implements Cloneable
 	}
 	/**
 	* sets the y position of the Hole
-	* @param the y position
+	* @param y the y position
 	*/
 	public void setY(int y)
 	{
@@ -75,7 +78,7 @@ abstract class Hole implements Cloneable
 	
 	/**
 	* sets the pebble count in the hole
-	* @param the amount of pebbles
+	* @param pebbles the amount of pebbles
 	*/
 	public void setStones(int pebbles)
 	{
@@ -134,7 +137,7 @@ abstract class Hole implements Cloneable
 	abstract public void translatePebble(int x, int y, int z);
 	/**
 	* draws the hole onto the screen
-	* @param 2-dimensional graphics object to draw on
+	* @param g2 2-dimensional graphics object to draw on
 	* @param x coordinate
 	* @param y coordinate
 	*/
@@ -152,7 +155,7 @@ abstract class Hole implements Cloneable
 	}
 	/**
 	* draws the all the stones in the hole
-	* @param 2-dimensional graphics object to draw on
+	* @param g2 2-dimensional graphics object to draw on
 	* @param x coordinate
 	* @param y coordinate
 	*/

@@ -5,6 +5,9 @@ import java.awt.geom.Ellipse2D;
 import java.util.Random;
 
 /**
+* @author Samuel Boulanger
+* @author Cindy Ho
+* @author Aldo Barrientos
 * Mancala class representing the Mancala holes
 */
  class Mancala extends Hole 
@@ -17,6 +20,8 @@ import java.util.Random;
 
 	/**
 	* calls the Hole (super) contructor
+	* @param pebbles the amount of pebbles in Mancala
+	* @param id the ID of the hole
 	*/
 	public Mancala(int pebbles, int id) 
 	{
@@ -27,7 +32,7 @@ import java.util.Random;
 
 	/**
 	* draws the all the stones in the hole
-	* @param 2-dimensional graphics object to draw on
+	* @param g2 2-dimensional graphics object to draw on
 	* @param x coordinate
 	* @param y coordinate
 	*/
