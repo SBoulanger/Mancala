@@ -1,0 +1,27 @@
+#title
+{
+	font-family: Copperplate, 'Copperplate Gothic Light', fantasy;
+		font-size: 40px;
+
+}
+
+.inputs
+{
+	font-family: 'Walter Turncoat';
+		font-size: 24px;
+
+
+}
+body
+{
+	text-align: center;
+	background-color: rgb(18,134,236);
+}
+
+input[type="text"]
+{
+    font-size:24px;
+    	font-family: 'Nova Flat';
+
+
+}
